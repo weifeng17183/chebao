@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.SecondTypeMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.SecondType">
+		<id column="second_type_id" property="secondTypeId" jdbcType="INTEGER" />
+		<result column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="second_type_name" property="secondTypeName"
+			jdbcType="VARCHAR" />
+		<association property="stuffType" column="stuff_type_id"
+			javaType="com.justfind.entity.StuffType" select="com.justfind.dao.StuffTypeMapper.selectByPrimaryKey"></association>
+	</resultMap>
+
+	<resultMap id="SimpleMap" type="com.justfind.entity.SecondType">
+		<id column="second_type_id" property="secondTypeId" jdbcType="INTEGER" />
+		<result column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="second_type_name" property="secondTypeName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		second_type_id, stuff_type_id, second_type_name
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from second_type
+		where second_type_id =
+		#{secondTypeId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByStuffTypeId" resultMap="SimpleMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from second_type
+		where stuff_type_id =
+		#{stuffTypeId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from second_type
+		where second_type_name =
+		#{secondTypeName,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryList" resultMap="BaseResultMap"
+		parameterType="com.justfind.entity.SecondType">
+		select
+		<include refid="Base_Column_List" />
+		from second_type
+		<where>
+			<if test="secondTypeId != null">
+				and second_type_id=#{secondTypeId,jdbcType=INTEGER}
+			</if>
+			<if test="stuffTypeId != null">
+				and stuff_type_id=#{stuffTypeId,jdbcType=INTEGER}
+			</if>
+			<if test="secondTypeName != null">
+				and second_type_name like '%${secondTypeName}%'
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		second_type
+		where second_type_id = #{secondTypeId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.justfind.entity.SecondType">
+		insert into second_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="secondTypeId != null">
+				second_type_id,
+			</if>
+			<if test="stuffTypeId != null">
+				stuff_type_id,
+			</if>
+			<if test="secondTypeName != null">
+				second_type_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="secondTypeId != null">
+				#{secondTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="stuffTypeId != null">
+				#{stuffTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="secondTypeName != null">
+				#{secondTypeName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.SecondType">
+		update second_type
+		<set>
+			<if test="stuffTypeId != null">
+				stuff_type_id = #{stuffTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="secondTypeName != null">
+				second_type_name = #{secondTypeName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where second_type_id = #{secondTypeId,jdbcType=INTEGER}
+	</update>
+</mapper>

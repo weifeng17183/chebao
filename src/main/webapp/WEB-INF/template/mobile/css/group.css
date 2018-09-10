@@ -1,0 +1,50 @@
+.warp{
+	padding: 0 3%;
+}
+.nav{
+	padding: 10px 3%;
+}
+span.lately {
+    width: 22%;
+    display: inline-block;
+    text-align: left;
+}
+a.look-btn{
+	color: #333;
+	width: 76%;
+    display: inline-block;
+    text-align: right;
+}
+.banner img{width: 100%;}
+li.price{
+	padding-top: 2%;
+	width: 20%;
+	float: left;
+}
+li.mleft{
+	padding-left: 3%;
+}
+.li.price:first-child{
+	padding-left: 0;
+}
+p.num,span.prices{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #666;
+}
+a.btn {
+    width: 20%;
+    float: right;
+    background-color: #e02128;
+    line-height: 1.8;
+    color: #fff;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+span.prices{
+	width: 100%;
+	display: inline-block;
+	color:#ff7300;;
+}

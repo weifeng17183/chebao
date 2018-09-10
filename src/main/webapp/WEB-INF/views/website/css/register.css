@@ -1,0 +1,64 @@
+
+form.form-box {
+	width: 744px;
+  	background-color: #fff;
+  	border-radius: 10px;
+  	margin: 60px auto;
+}
+.title{
+	color: #3c6ab3;
+	border-bottom: 2px solid #3c6ab3;
+	width:130px;
+	text-align: center;
+	font-size: 24px;
+	padding-top: 38px;
+	padding-bottom: 22px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+
+
+
+
+.forgetPwd{
+	width: 374px;
+}
+.logo-box{
+	text-align: center;
+}
+.btn-logo{
+	margin-bottom:30px;
+	border-radius: 5px;
+	background-color: #169bd5;
+	color: #fff;
+	font-size: 18px;
+}
+.number,.register{
+	width: 230px;
+	padding-top: 34px;
+	padding-bottom: 42px;
+}
+.number{
+	text-align: right;
+	color: #000;
+}
+.register{
+	text-align: left;
+	color: #169bd5;
+}
+.btn{
+	padding-bottom: 76px;
+}
+
+.btn-accomplish{
+	width: 245px;
+  	height: 48px;
+	border-radius: 5px;
+	background-color: #169bd5;
+	color: #fff;
+	text-align: center;
+	line-height: 48px;
+	font-size: 22px;
+	margin-bottom:50px;
+	 margin-left:10px;
+}

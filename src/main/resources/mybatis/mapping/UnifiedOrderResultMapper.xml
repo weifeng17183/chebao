@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.UnifiedOrderResultMapper" >
+  <resultMap id="BaseResultMap" type="com.justfind.entity.UnifiedOrderResult" >
+    <id column="unified_order_result_id" property="unifiedOrderResultId" jdbcType="INTEGER" />
+    <result column="return_code" property="returnCode" jdbcType="VARCHAR" />
+    <result column="return_msg" property="returnMsg" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="mch_id" property="mchId" jdbcType="VARCHAR" />
+    <result column="nonce_str" property="nonceStr" jdbcType="VARCHAR" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="result_code" property="resultCode" jdbcType="VARCHAR" />
+    <result column="prepay_id" property="prepayId" jdbcType="VARCHAR" />
+    <result column="trade_type" property="tradeType" jdbcType="VARCHAR" />
+    <result column="time_stamp" property="timeStamp" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    unified_order_result_id, return_code, return_msg, app_id, mch_id, nonce_str, sign, 
+    result_code, prepay_id, trade_type, time_stamp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from unified_order_result
+    where unified_order_result_id = #{unifiedOrderResultId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from unified_order_result
+    where unified_order_result_id = #{unifiedOrderResultId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.justfind.entity.UnifiedOrderResult" >
+    insert into unified_order_result (unified_order_result_id, return_code, 
+      return_msg, app_id, mch_id, 
+      nonce_str, sign, result_code, 
+      prepay_id, trade_type, time_stamp
+      )
+    values (#{unifiedOrderResultId,jdbcType=INTEGER}, #{returnCode,jdbcType=VARCHAR}, 
+      #{returnMsg,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, #{mchId,jdbcType=VARCHAR}, 
+      #{nonceStr,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, #{resultCode,jdbcType=VARCHAR}, 
+      #{prepayId,jdbcType=VARCHAR}, #{tradeType,jdbcType=VARCHAR}, #{timeStamp,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.justfind.entity.UnifiedOrderResult" useGeneratedKeys="true" keyProperty="unifiedOrderResultId">
+    insert into unified_order_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="unifiedOrderResultId != null" >
+        unified_order_result_id,
+      </if>
+      <if test="returnCode != null" >
+        return_code,
+      </if>
+      <if test="returnMsg != null" >
+        return_msg,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="mchId != null" >
+        mch_id,
+      </if>
+      <if test="nonceStr != null" >
+        nonce_str,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="resultCode != null" >
+        result_code,
+      </if>
+      <if test="prepayId != null" >
+        prepay_id,
+      </if>
+      <if test="tradeType != null" >
+        trade_type,
+      </if>
+      <if test="timeStamp != null" >
+        time_stamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="unifiedOrderResultId != null" >
+        #{unifiedOrderResultId,jdbcType=INTEGER},
+      </if>
+      <if test="returnCode != null" >
+        #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null" >
+        #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="nonceStr != null" >
+        #{nonceStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null" >
+        #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayId != null" >
+        #{prepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null" >
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null" >
+        #{timeStamp,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.UnifiedOrderResult" >
+    update unified_order_result
+    <set >
+      <if test="returnCode != null" >
+        return_code = #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null" >
+        return_msg = #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        mch_id = #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="nonceStr != null" >
+        nonce_str = #{nonceStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null" >
+        result_code = #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="prepayId != null" >
+        prepay_id = #{prepayId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null" >
+        trade_type = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null" >
+        time_stamp = #{timeStamp,jdbcType=INTEGER},
+      </if>
+    </set>
+    where unified_order_result_id = #{unifiedOrderResultId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.justfind.entity.UnifiedOrderResult" >
+    update unified_order_result
+    set return_code = #{returnCode,jdbcType=VARCHAR},
+      return_msg = #{returnMsg,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      mch_id = #{mchId,jdbcType=VARCHAR},
+      nonce_str = #{nonceStr,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=VARCHAR},
+      prepay_id = #{prepayId,jdbcType=VARCHAR},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      time_stamp = #{timeStamp,jdbcType=INTEGER}
+    where unified_order_result_id = #{unifiedOrderResultId,jdbcType=INTEGER}
+  </update>
+</mapper>

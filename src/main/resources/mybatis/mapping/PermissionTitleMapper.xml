@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.PermissionTitleMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.PermissionTitle">
+		<id column="title_id" property="titleId" jdbcType="INTEGER" />
+		<result column="title_name" property="titleName" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ListMap" type="com.justfind.entity.PermissionTitle">
+		<id column="title_id" property="titleId" jdbcType="INTEGER" />
+		<result column="title_name" property="titleName" jdbcType="VARCHAR" />
+		<collection property="permissionList" select="selectPermissionList"
+			ofType="com.justfind.dao.Permission" column="title_id"></collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		title_id, title_name
+	</sql>
+
+	<select id="selectPermissionList" resultMap="com.justfind.dao.PermissionMapper.BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from permission where title_id =
+		#{titleId,jdbcType=INTEGER}
+	</select>
+
+	<select id="listAll" resultMap="ListMap">
+		select
+		<include refid="Base_Column_List" />
+		from permission_title
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from permission_title
+		where title_id = #{titleId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		permission_title
+		where title_id = #{titleId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.justfind.entity.PermissionTitle">
+		insert into permission_title
+		(title_id, title_name)
+		values (#{titleId,jdbcType=INTEGER},
+		#{titleName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.justfind.entity.PermissionTitle">
+		insert into permission_title
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="titleId != null">
+				title_id,
+			</if>
+			<if test="titleName != null">
+				title_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="titleId != null">
+				#{titleId,jdbcType=INTEGER},
+			</if>
+			<if test="titleName != null">
+				#{titleName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.PermissionTitle">
+		update permission_title
+		<set>
+			<if test="titleName != null">
+				title_name = #{titleName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where title_id = #{titleId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.justfind.entity.PermissionTitle">
+		update
+		permission_title
+		set title_name = #{titleName,jdbcType=VARCHAR}
+		where
+		title_id = #{titleId,jdbcType=INTEGER}
+	</update>
+</mapper>

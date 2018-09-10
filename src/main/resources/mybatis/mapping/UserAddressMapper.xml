@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.UserAddressMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.UserAddress">
+		<id column="address_id" property="addressId" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="area" property="area" jdbcType="VARCHAR" />
+		<result column="street" property="street" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		address_id, user_id, province, city, area, street
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user_address
+		where address_id = #{addressId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user_address
+		where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<select id="getMaxId" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		select max(address_id) from user_address
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		user_address
+		where address_id = #{addressId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertSelective" parameterType="com.justfind.entity.UserAddress">
+		insert into user_address
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				address_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="province != null">
+				province,
+			</if>
+			<if test="city != null">
+				city,
+			</if>
+			<if test="area != null">
+				area,
+			</if>
+			<if test="street != null">
+				street,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="addressId != null">
+				#{addressId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area,jdbcType=VARCHAR},
+			</if>
+			<if test="street != null">
+				#{street,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.UserAddress">
+		update user_address
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="province != null">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				area = #{area,jdbcType=VARCHAR},
+			</if>
+			<if test="street != null">
+				street = #{street,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where address_id = #{addressId,jdbcType=INTEGER}
+	</update>
+</mapper>

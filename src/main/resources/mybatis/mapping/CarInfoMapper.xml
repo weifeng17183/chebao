@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.CarInfoMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.CarInfo">
+		<id column="car_id" property="carId" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="car_number" property="carNumber" jdbcType="VARCHAR" />
+		<result column="engine_number" property="engineNumber"
+			jdbcType="VARCHAR" />
+		<result column="frame_number" property="frameNumber" jdbcType="VARCHAR" />
+		<result column="mileage" property="mileage" jdbcType="INTEGER" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="car_name" property="carName" jdbcType="VARCHAR" />
+		<result column="colour" property="colour" jdbcType="VARCHAR" />
+		<result column="insurance_company" property="insuranceCompany"
+			jdbcType="VARCHAR" />
+		<result column="insurance_num" property="insuranceNum"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		car_id, user_id, car_number, engine_number, frame_number,
+		mileage, memo,
+		car_name,
+		colour,insurance_company,insurance_num
+	</sql>
+
+	<select id="selectByUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		FROM car_info WHERE user_id = #{userId}
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from car_info
+		where car_id = #{carId,jdbcType=INTEGER}
+	</select>
+
+	<select id="getMaxId" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		select max(car_id) from car_info
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		car_info
+		where car_id = #{carId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.justfind.entity.CarInfo">
+		insert into car_info (car_id,
+		user_id, car_number,
+		engine_number, frame_number, mileage,
+		memo,
+		car_name, colour
+		)
+		values (#{carId,jdbcType=INTEGER},
+		#{userId,jdbcType=INTEGER},
+		#{carNumber,jdbcType=VARCHAR},
+		#{engineNumber,jdbcType=VARCHAR}, #{frameNumber,jdbcType=VARCHAR},
+		#{mileage,jdbcType=INTEGER},
+		#{memo,jdbcType=VARCHAR},
+		#{carName,jdbcType=VARCHAR},
+		#{colour,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.justfind.entity.CarInfo">
+		insert into car_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="carId != null">
+				car_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="carNumber != null">
+				car_number,
+			</if>
+			<if test="engineNumber != null">
+				engine_number,
+			</if>
+			<if test="frameNumber != null">
+				frame_number,
+			</if>
+			<if test="mileage != null">
+				mileage,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="carName != null">
+				car_name,
+			</if>
+			<if test="colour != null">
+				colour,
+			</if>
+			<if test="insuranceCompany != null">
+				insurance_company,
+			</if>
+			<if test="insuranceNum != null">
+				insurance_num,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="carId != null">
+				#{carId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="carNumber != null">
+				#{carNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="engineNumber != null">
+				#{engineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="frameNumber != null">
+				#{frameNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="mileage != null">
+				#{mileage,jdbcType=INTEGER},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="carName != null">
+				#{carName,jdbcType=VARCHAR},
+			</if>
+			<if test="colour != null">
+				#{colour,jdbcType=VARCHAR},
+			</if>
+			<if test="insuranceCompany != null">
+				#{insuranceCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="insuranceNum != null">
+				#{insuranceNum,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.CarInfo">
+		update car_info
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="carNumber != null">
+				car_number = #{carNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="engineNumber != null">
+				engine_number = #{engineNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="frameNumber != null">
+				frame_number = #{frameNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="mileage != null">
+				mileage = #{mileage,jdbcType=INTEGER},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="carName != null">
+				car_name = #{carName,jdbcType=VARCHAR},
+			</if>
+			<if test="colour != null">
+				colour = #{colour,jdbcType=VARCHAR},
+			</if>
+			<if test="insuranceCompany != null">
+				insurance_company = #{insuranceCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="insuranceNum != null">
+				insurance_num = #{insuranceNum,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where car_id = #{carId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.justfind.entity.CarInfo">
+		update car_info
+		set user_id = #{userId,jdbcType=INTEGER},
+		car_number =
+		#{carNumber,jdbcType=VARCHAR},
+		engine_number =
+		#{engineNumber,jdbcType=VARCHAR},
+		frame_number =
+		#{frameNumber,jdbcType=VARCHAR},
+		mileage = #{mileage,jdbcType=INTEGER},
+		memo = #{memo,jdbcType=VARCHAR},
+		car_name =
+		#{carName,jdbcType=VARCHAR},
+		colour = #{colour,jdbcType=VARCHAR}
+		where
+		car_id = #{carId,jdbcType=INTEGER}
+	</update>
+</mapper>

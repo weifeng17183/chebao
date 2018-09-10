@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="  
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<description>apache shiro配置</description>
+
+	<!-- 配置权限管理器 -->
+	<bean id="myAuthorizingRealm" class="com.justfind.authz.MyAuthorizingRealm" />
+
+	<!-- 缓存管理器 使用Ehcache实现 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+
+	<!-- Shiro生命周期处理器 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- 会话DAO -->
+	<bean id="sessionDAO"
+		class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+		<property name="activeSessionsCacheName" value="shiro-activeSessionCache" />
+		<property name="sessionIdGenerator" ref="sessionIdGenerator" />
+	</bean>
+	<!-- 会话ID生成器 -->
+	<bean id="sessionIdGenerator"
+		class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
+
+	<!-- 会话验证调度器 -->
+	<!-- <bean id="sessionValidationScheduler"
+		class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+		<property name="sessionValidationInterval" value="1800000" />
+		<property name="sessionManager" ref="sessionManager" />
+	</bean> -->
+	<!-- 会话Cookie模板 -->
+	<!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID, 
+		当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! -->
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg name="name" value="zcb.session.id" />
+		<property name="httpOnly" value="true" />
+		<property name="maxAge" value="180000000" />
+	</bean>
+
+	<!-- 会话管理器 -->
+	<bean id="sessionManager"
+		class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="180000000" />
+		<!-- <property name="deleteInvalidSessions" value="true" /> -->
+		<property name="sessionValidationSchedulerEnabled" value="false" />
+		<property name="sessionIdCookieEnabled" value="true" />
+		<property name="sessionIdCookie" ref="sessionIdCookie" />
+		<!-- <property name="sessionValidationScheduler" ref="sessionValidationScheduler" /> -->
+		<property name="sessionDAO" ref="sessionDAO" />
+	</bean>
+
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myAuthorizingRealm" />
+		<!-- cacheManager,集合spring缓存工厂 -->
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="sessionManager" ref="sessionManager" />
+	</bean>
+
+	<bean id="shiroFilter" class="com.justfind.starter.ShiroPermissionFactory">
+		<!-- 调用我们配置的权限管理器 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 配置我们的登录请求地址 -->
+		<property name="loginUrl" value="/login" />
+		<!-- 配置我们在登录页登录成功后的跳转地址，如果你访问的是非/login地址，则跳到您访问的地址 -->
+		<property name="successUrl" value="/admin/page/main" />
+		<!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->
+		<property name="unauthorizedUrl" value="/403" />
+		<!-- 权限配置 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/login=anon
+				/clogin=anon
+				/error=anon
+				/logout=anon
+				/clogout=anon
+			</value>
+		</property>
+	</bean>
+</beans> 

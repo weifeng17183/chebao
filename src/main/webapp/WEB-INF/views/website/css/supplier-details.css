@@ -1,0 +1,28 @@
+
+.supplydetai{ width:965px; margin:20px 0 20px 20px; float:left;}
+.supplydetai dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.supplydetai dl span{ float:left; display:block; width:180px; text-align:center;}
+.supplydetai .time{ text-align:left;}
+.supplydetai .name1{width:345px;}
+
+.supplydetai .Order em{ background:#ff0000; border-radius:5px/5px;display:block;width:55px;line-height:35px; margin-top:50px;margin-left:15px; float:right;}
+.supplydetai .Order em a{color:#fff;display:block;text-align:center;}
+
+.supplydetai dd{float:left; display:block; width:889px;padding:20px 38px; border-bottom:1px solid #dbdbdb;}
+.supplydetai dd span{ height:125px; line-height:125px;}
+.supplydetai dd span a{ color:#333;}
+.supplydetai dd span img{ padding-right:10px;}
+
+.details{ width:965px; margin:0 20px 20px; float:left;}
+.details p{ line-height:30px;}
+
+/*产品详情*/
+.buydetails{ width:965px; margin:20px 0 20px 20px; float:left;}
+.buydetails dt{float:left; display:block; width:965px;height:40px;line-height:40px; background:#f2f2f2;}
+.buydetails dl span{ float:left; display:block; width:160px; text-align:center;}
+
+.buydetails dd{float:left; display:block; width:965px;padding:20px 0; border-bottom:1px solid #dbdbdb;}
+.buydetails dd span{ height:125px; line-height:125px;}
+.buydetails dd span a{ color:#333;}
+.buydetails dd span img{ padding-right:10px;}
+

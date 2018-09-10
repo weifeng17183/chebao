@@ -1,0 +1,155 @@
+/*商铺banner*/
+.shopbanner{ margin:0 auto; height:230px; background:url(../img/shop-BJ.jpg) center no-repeat; text-align:center;}
+
+
+
+/*商品详情*/
+body{
+	background-color: #fff;
+}
+.content{
+	margin-top: 22px;
+}
+.left{
+	width: 196px;
+	border: 1px solid #e5e5e5;
+	float: left;
+	line-height: 1.8;
+}
+.left>p{
+	padding: 0 14px;
+	line-height:30px;
+	 color:#504d4d;
+}
+.left h2{
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color:#f5f5f5;
+	margin-bottom:10px;
+}
+.biaoti-div{
+	border-bottom: 1px solid #E5E5E5;
+}
+.biaoti{
+	color: #ff7300;
+	text-indent: 20px;
+	font-weight: bold;
+	height: 42px;
+	width: 96px;
+	display: inline-block;
+	line-height: 42px;
+}
+.title{
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color:#f5f5f5;
+}
+
+.panels li{ font-size:14px;}
+
+.item{
+	float: left;
+}
+.form-ago{ padding-left:20px;
+	width: 960px;
+	margin-bottom: 20px;
+}
+.search-form-ago{
+	float: left;
+	color: #fff;
+	width: 272px;
+	height:34px;
+	display: block;
+	border: 1px solid #ff7300;
+	border-radius:5px/5px;
+}
+.search-input-text-ago,.search-input-button-ago{
+	border: 0;
+	float: left;
+}
+.search-input-text-ago{ padding-left:5px;
+	width: 224px;
+	height: 30px;
+	border-right: 1px solid #E5E5E5;
+	outline: none;
+}
+.search-input-button-ago {
+  background: url("../img/search-btn.png") center;
+  width: 36px;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+}
+.right{
+	width: 1010px;
+	border: 1px solid #e5e5e5;
+	border-top: 1px solid #ff7300;
+	float: right;
+}
+.goods-bigimg{
+	width: 226px;
+	height: 226px;
+}
+.goods-bigimg:first-child{
+	margin-left: 0;
+}
+figure.goods{ padding-bottom:10px;
+	margin:0 10px 20px;
+	border: 1px solid #e2e2e2;
+	background-color: #fff!important;
+}
+.group-text{ font-size:12px;
+	text-align: center;
+	width: 226px;
+	line-height:24px;
+}
+.line-p{
+	line-height: 2;
+	padding:2px 14px;
+	 font-size:12px;
+}
+
+
+/*团购详情*/
+.plate{
+	width: 790px;
+	background:#f2f2f2;
+	height:60px;
+	padding:13px;
+}
+.plate>li{
+	width: 197px;
+	line-height: 2.4;
+	float: left;
+}
+.prices{
+	color: #ff4400;
+}
+.colors{
+	color: #6c6c6c;
+}
+.group-time{
+	font-size: 22px;
+	color: #ff0808;
+	font-weight: bold;
+}
+.group-number{
+	display: inline-block;
+	width: 121px;
+}
+.group-box{
+	margin-top: 20px;
+}
+.text {
+  text-align: center;
+  line-height: 30px;
+  width: 225px;
+}
+#nav1,#nav2{
+	cursor: pointer;
+}
+.t2{
+	display: none;
+}

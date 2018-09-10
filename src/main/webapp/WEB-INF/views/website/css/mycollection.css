@@ -1,0 +1,25 @@
+
+.Collection{ width:965px; margin:20px 0 20px 20px;}
+.Collection dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.Collection dl span{ float:left; display:block; width:296px; }
+.Collection .time{ text-align:center;}
+.Collection .operation{text-align:right; padding-right:40px;width:256px;}
+.Collection .collection em{ background:#ff0000; border-radius:5px/5px; text-align:center;display:block;width:100px;line-height:35px; margin-top:50px; float:right;}
+.Collection .collection em a{color:#fff;display:block;text-align:center;}
+
+.Collection dd{float:left; display:block; width:889px;padding:20px 38px; border-bottom:1px solid #dbdbdb;}
+.Collection dd span{ height:125px; line-height:125px;}
+.Collection dd span a{ color:#333;}
+.Collection dd span img{ padding-right:10px; float:left;}
+.Collection dd span p{line-height:26px;padding-top:50px; width:160px; float:left; text-align:left;}
+
+.tionsearch{ margin:20px 20px 0 0; height:40px;}
+.Recruitment_Page{width:765px; background:#fff; padding:20px 0 15px 200px;float:left; color:#666}
+.Recruitment_Page ul{}
+.Recruitment_Page li{ float:left; display:block;line-height:40px; margin:0 5px;}
+.Recruitment_Page li a{ display:block; padding:0 15px;border:1px solid #e5e5e5; color:#666}
+.Recruitment_Page li a:hover{ display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Recruitment_Page .prev{display:block; padding:0 15px;background:#efefef; color:#999;border:1px solid #e5e5e5;}
+.Recruitment_Page .current a{display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Recruitment_Page .pageInput{line-height:40px; height:40px; width:44px;border:none; border:1px solid #e5e5e5;}
+.Recruitment_Page .pageBtn{height:40px; width:72px; background:#fff; border:none; border:1px solid #e5e5e5;}

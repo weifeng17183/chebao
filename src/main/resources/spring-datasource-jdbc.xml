@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.1.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-4.1.xsd" 
+	>
+		
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+	
+	    <!-- JDBC连接串 -->
+	    <property name="url" value="jdbc:mysql://${DB.JDBCURL}?useUnicode=true&amp;characterEncoding=UTF-8" />
+	    <!-- 数据库用户名-->
+	    <property name="username" value="${DB.USERNAME}" />
+	    <!-- 数据库用户密码 -->
+	    <property name="password" value="${DB.PASSWORD}"/>
+	    
+        <!-- 驱动名称-->
+	    <property name="driverClassName" value="${DB.DRIVERCLASS}" />
+	    <property name="filters" value="stat" />
+	    <!-- 控制密码是否加密 
+        <property name="connectionProperties" value="config.decrypt=true" />-->
+	    <!-- 连接池扩展
+	    <property name="filters" value="config" />-->
+	    <!-- 连接池最大值-->
+	    <property name="maxActive" value="50" />
+	    <!-- 初始化大小 -->
+	    <property name="initialSize" value="5" />
+	    <!-- 获取连接最大等待时间 -->
+	    <property name="maxWait" value="60000" />
+	    <!-- 连接池最小空闲 -->
+	    <property name="minIdle" value="1" />
+	    <!-- 逐出连接的检测时间间隔 -->  
+	    <property name="timeBetweenEvictionRunsMillis" value="3000" />
+	    <!-- 最小逐出时间  --> 
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	    <!-- 检测连接是否有效的SQL-->
+	    <property name="validationQuery" value="SELECT 1 FROM DUAL" />
+	    <!-- 借出连接时是否做测试-->
+	    <property name="testWhileIdle" value="true" />
+	    <!-- 借出连接时是否做测试-->
+	    <property name="testOnBorrow" value="false" />
+	     <!--归还连接时是否做测试-->
+	    <property name="testOnReturn" value="false" />
+	     <!--借出连接时是否做测试-->
+	   <!-- <property name="poolPreparedStatements" value="true" />
+	     Statement缓存大小
+	    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />-->
+     </bean>
+</beans>

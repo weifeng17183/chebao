@@ -1,0 +1,96 @@
+body{
+	background-color: #fff;
+}
+/*澶у垎绫�*/
+.bigclassify{ width:1220px; border:1px solid #e2e2e2; margin:20px 0; padding:20px 0;}
+
+.text{
+	text-align: center; line-height:30px;
+}
+/*鍒嗙被瀵艰埅*/
+.classify{ margin-bottom:20px;
+	border: 1px solid #e2e2e2;	
+}
+.classify-item{
+	float: left;
+	text-align: center;
+}
+.item-a{
+	color: #555;
+}
+.classify-item>span{
+	display: inline-block;
+	color: #888;
+}
+.classify-item>span,.item-a{
+	padding: 16px 20px;
+}
+.goods2{ border-right:1px solid #e2e2e2; padding:0 20px;width:154px;height:155px;}
+.goods2>img{width: 100%;}
+.goods3{padding:0 20px;width:154px;height:155px;}
+.goods3>img{width: 100%;}
+.goods>img{width: 100%;}
+.bigclassify2{width:1220px;margin:20px 0; }
+.bigdiv{
+	height: 189px;
+}
+figure.goods{ padding-bottom:10px;
+	margin:0 6px 16px;
+	border: 1px solid #e2e2e2;
+	background-color: #fff!important; 
+	text-align:center;
+}
+.btnheel{
+	width: 132px;
+	height: 39px;
+	line-height: 39px;
+	display: inline-block;
+	text-align: center;
+	color: #fff;
+	background-color: #ff7300;
+}
+.btnheel:hover{ color:#fff;}
+.btn2{ margin-left:10px;
+	width: 132px;
+	height: 39px;
+	line-height: 39px;
+	display: inline-block;
+	text-align: center;
+	color: #fff;
+	background-color: #c9c9c9;
+}
+.btn2:hover{ color:#fff;}
+.heel-form{ margin-top:9px;
+	float: right;
+	width:280px;
+}
+
+.search-input-text{ 
+	width: 210px;
+	height: 30px;
+	border-right: 1px solid #E5E5E5;
+	border-radius: 15px;
+	outline: none;
+	border: none;
+	text-indent: 20px;
+}
+.search-input-button {
+  background: url("../img/search.png")no-repeat;
+  width: 36px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  
+}
+
+.Rheel_Page{width:765px; background:#fff; padding:20px 0 15px 320px;float:left; color:#666;}
+.Rheel_Page li{ float:left; display:block;line-height:40px; margin:0 5px;}
+.Rheel_Page li a{ display:block; padding:0 15px;border:1px solid #e5e5e5; color:#666}
+.Rheel_Page li a:hover{ display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Rheel_Page .prev{display:block; padding:0 15px;background:#efefef; color:#999;border:1px solid #e5e5e5;}
+.Rheel_Page .current a{display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Rheel_Page .pageInput{line-height:40px; height:40px; width:44px;border:none; border:1px solid #e5e5e5;}
+.Rheel_Page .pageBtn{height:40px; width:72px; background:#fff; border:none; border:1px solid #e5e5e5;}
+.curr{color: #FF7300;}

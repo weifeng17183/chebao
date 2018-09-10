@@ -1,0 +1,58 @@
+
+form.form-box {
+	width: 744px;
+  	background-color: #fff;
+  	border-radius: 10px;
+  	margin: 130px auto;
+}
+.title{
+	color: #3c6ab3;
+	border-bottom: 2px solid #3c6ab3;
+	width:130px;
+	text-align: center;
+	font-size: 24px;
+	padding-top: 38px;
+	padding-bottom: 22px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+.form-plane{
+	width: 477px;
+	margin: 0 auto;
+}
+.input-item{
+	height: 66px;
+}
+.input-item-chek{
+	height: 44px;
+}
+.phone,.pwd{
+	width: 394px;
+	height: 40px;
+}
+.forgetPwd{
+	width: 374px;
+}
+.logo-box{
+	text-align: center;
+}
+.btn-logo{
+	padding: 17px 122px;
+	border-radius: 5px;
+	background-color: #169bd5;
+	color: #fff;
+	font-size: 18px;
+}
+.number,.register{
+	width: 230px;
+	padding-top: 34px;
+	padding-bottom: 42px;
+}
+.number{
+	text-align: right;
+	color: #000;
+}
+.register{
+	text-align: left;
+	color: #169bd5;
+}

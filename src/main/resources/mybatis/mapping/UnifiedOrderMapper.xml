@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.UnifiedOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.justfind.entity.UnifiedOrder" >
+    <id column="unified_order_id" property="unifiedOrderId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="mch_id" property="mchId" jdbcType="VARCHAR" />
+    <result column="device_info" property="deviceInfo" jdbcType="VARCHAR" />
+    <result column="nonce_str" property="nonceStr" jdbcType="VARCHAR" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="body" property="body" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="attach" property="attach" jdbcType="VARCHAR" />
+    <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+    <result column="fee_type" property="feeType" jdbcType="VARCHAR" />
+    <result column="total_fee" property="totalFee" jdbcType="INTEGER" />
+    <result column="spbill_create_ip" property="spbillCreateIp" jdbcType="VARCHAR" />
+    <result column="time_start" property="timeStart" jdbcType="VARCHAR" />
+    <result column="time_expire" property="timeExpire" jdbcType="VARCHAR" />
+    <result column="goods_tag" property="goodsTag" jdbcType="VARCHAR" />
+    <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
+    <result column="return_code" property="returnCode" jdbcType="VARCHAR" />
+    <result column="trade_type" property="tradeType" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="limit_pay" property="limitPay" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_update" property="gmtUpdate" jdbcType="TIMESTAMP" />
+    <result column="prepay_id" property="prepayId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    unified_order_id, app_id, mch_id, device_info, nonce_str, sign, body, detail, attach, 
+    out_trade_no, fee_type, total_fee, spbill_create_ip, time_start, time_expire, goods_tag, 
+    notify_url, return_code, trade_type, product_id, limit_pay, open_id, gmt_create, 
+    gmt_update, prepay_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from unified_order
+    where unified_order_id = #{unifiedOrderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from unified_order
+    where unified_order_id = #{unifiedOrderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.justfind.entity.UnifiedOrder" >
+    insert into unified_order (unified_order_id, app_id, mch_id, 
+      device_info, nonce_str, sign, 
+      body, detail, attach, 
+      out_trade_no, fee_type, total_fee, 
+      spbill_create_ip, time_start, time_expire, 
+      goods_tag, notify_url, return_code, 
+      trade_type, product_id, limit_pay, 
+      open_id, gmt_create, gmt_update, 
+      prepay_id)
+    values (#{unifiedOrderId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{mchId,jdbcType=VARCHAR}, 
+      #{deviceInfo,jdbcType=VARCHAR}, #{nonceStr,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{body,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{attach,jdbcType=VARCHAR}, 
+      #{outTradeNo,jdbcType=VARCHAR}, #{feeType,jdbcType=VARCHAR}, #{totalFee,jdbcType=INTEGER}, 
+      #{spbillCreateIp,jdbcType=VARCHAR}, #{timeStart,jdbcType=VARCHAR}, #{timeExpire,jdbcType=VARCHAR}, 
+      #{goodsTag,jdbcType=VARCHAR}, #{notifyUrl,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, 
+      #{tradeType,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{limitPay,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP}, 
+      #{prepayId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.justfind.entity.UnifiedOrder" >
+    insert into unified_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="unifiedOrderId != null" >
+        unified_order_id,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="mchId != null" >
+        mch_id,
+      </if>
+      <if test="deviceInfo != null" >
+        device_info,
+      </if>
+      <if test="nonceStr != null" >
+        nonce_str,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="body != null" >
+        body,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="attach != null" >
+        attach,
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no,
+      </if>
+      <if test="feeType != null" >
+        fee_type,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="spbillCreateIp != null" >
+        spbill_create_ip,
+      </if>
+      <if test="timeStart != null" >
+        time_start,
+      </if>
+      <if test="timeExpire != null" >
+        time_expire,
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag,
+      </if>
+      <if test="notifyUrl != null" >
+        notify_url,
+      </if>
+      <if test="returnCode != null" >
+        return_code,
+      </if>
+      <if test="tradeType != null" >
+        trade_type,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="limitPay != null" >
+        limit_pay,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtUpdate != null" >
+        gmt_update,
+      </if>
+      <if test="prepayId != null" >
+        prepay_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="unifiedOrderId != null" >
+        #{unifiedOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInfo != null" >
+        #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nonceStr != null" >
+        #{nonceStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null" >
+        #{body,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="attach != null" >
+        #{attach,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeType != null" >
+        #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="spbillCreateIp != null" >
+        #{spbillCreateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStart != null" >
+        #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeExpire != null" >
+        #{timeExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTag != null" >
+        #{goodsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null" >
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null" >
+        #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null" >
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="limitPay != null" >
+        #{limitPay,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null" >
+        #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prepayId != null" >
+        #{prepayId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.UnifiedOrder" >
+    update unified_order
+    <set >
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="mchId != null" >
+        mch_id = #{mchId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInfo != null" >
+        device_info = #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nonceStr != null" >
+        nonce_str = #{nonceStr,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null" >
+        body = #{body,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="attach != null" >
+        attach = #{attach,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeType != null" >
+        fee_type = #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=INTEGER},
+      </if>
+      <if test="spbillCreateIp != null" >
+        spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStart != null" >
+        time_start = #{timeStart,jdbcType=VARCHAR},
+      </if>
+      <if test="timeExpire != null" >
+        time_expire = #{timeExpire,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsTag != null" >
+        goods_tag = #{goodsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyUrl != null" >
+        notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null" >
+        return_code = #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeType != null" >
+        trade_type = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="limitPay != null" >
+        limit_pay = #{limitPay,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtUpdate != null" >
+        gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prepayId != null" >
+        prepay_id = #{prepayId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where unified_order_id = #{unifiedOrderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.justfind.entity.UnifiedOrder" >
+    update unified_order
+    set app_id = #{appId,jdbcType=VARCHAR},
+      mch_id = #{mchId,jdbcType=VARCHAR},
+      device_info = #{deviceInfo,jdbcType=VARCHAR},
+      nonce_str = #{nonceStr,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      body = #{body,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      fee_type = #{feeType,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=INTEGER},
+      spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR},
+      time_start = #{timeStart,jdbcType=VARCHAR},
+      time_expire = #{timeExpire,jdbcType=VARCHAR},
+      goods_tag = #{goodsTag,jdbcType=VARCHAR},
+      notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      return_code = #{returnCode,jdbcType=VARCHAR},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=VARCHAR},
+      limit_pay = #{limitPay,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_update = #{gmtUpdate,jdbcType=TIMESTAMP},
+      prepay_id = #{prepayId,jdbcType=VARCHAR}
+    where unified_order_id = #{unifiedOrderId,jdbcType=INTEGER}
+  </update>
+</mapper>

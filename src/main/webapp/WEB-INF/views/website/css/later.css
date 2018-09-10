@@ -1,0 +1,6 @@
+/*账户安全*/
+.form p{height:30px; margin-top:15px;}
+.form label{ width:80px; line-height:30px; display:block; float: left; text-align:right;}
+.form .Textbox{ height:25px; line-height:25px; padding-left:5px;}
+.form{width: 400px;padding-top: 30px;padding-left: 50px;}
+.affirm-btn,.cancel-btn{color: #fff;background-color: #4778c7;border-radius: 5px;width:100px;line-height:35px;margin-top: 30px;margin-left:50px; display:block; float:left;font-size:14px;}

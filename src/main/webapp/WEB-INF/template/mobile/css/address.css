@@ -1,0 +1,76 @@
+body{
+	background-color: #f1f1f1;
+}
+.wrap{
+	padding: 3%;
+}
+.header,.state{
+	background-color: #fff;
+}
+.header{
+	border-bottom: 5px solid #F1F1F1;
+}
+.r {
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+.state{
+	padding: 3%;
+	border-top: 1px solid #f1f1f1;
+}
+.edit,.del{
+	padding: 3%;
+	width: 30%;
+    text-align: right;
+    display: inline-block;
+ 
+}
+.edit>a,.del>a,.btn>a{
+	color:#999;
+}
+.edit{
+	display: inline-block;
+	background: url("../images/edit.jpg") no-repeat 4px 3px;
+	background-size: 22px;
+}
+.del{
+	background: url("../images/del.jpg") no-repeat 4px 3px; 
+	background-size: 20px;
+}
+.addBtn {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fe4543;
+    border-radius: 5px;
+   	margin-top: 5px;
+}
+.add,.addBtn{
+	padding: 2%;
+}
+.add {
+    color: #fff;
+    text-align: center;
+    background: url("../images/add.jpg") no-repeat 108px 5px;
+    background-size: 22px;
+}
+
+
+.phone{
+	display: inline-block;
+	width:84%;
+	background: url(../images/gou_03.jpg) no-repeat right;
+	background-size:24px;
+}
+.uname{
+	height:34px;
+}
+.btn{
+	border: 1px solid #d7d7d7;
+	color: #999;
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px 8px;
+	float: right;
+}
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.RateMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.Rate">
+		<result column="factory_rate" property="factoryRate" jdbcType="INTEGER" />
+		<result column="invater_rate" property="invaterRate" jdbcType="INTEGER" />
+		<result column="platform_rate" property="platformRate"
+			jdbcType="INTEGER" />
+	</resultMap>
+
+	<select id="selectOne" resultMap="BaseResultMap">
+		select * from rate
+	</select>
+
+	<insert id="insert" parameterType="com.justfind.entity.Rate">
+		insert into rate
+		(factory_rate, invater_rate, platform_rate
+		)
+		values
+		(#{factoryRate,jdbcType=INTEGER}, #{invaterRate,jdbcType=INTEGER},
+		#{platformRate,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<update id="updateSelective" parameterType="com.justfind.entity.Rate">
+		update rate
+		<set>
+			<if test="factoryRate != null">
+				factory_rate = #{factoryRate,jdbcType=INTEGER},
+			</if>
+			<if test="invaterRate != null">
+				invater_rate = #{invaterRate,jdbcType=INTEGER},
+			</if>
+			<if test="platformRate != null">
+				platform_rate = #{platformRate,jdbcType=INTEGER},
+			</if>
+		</set>
+	</update>
+
+	<insert id="insertSelective" parameterType="com.justfind.entity.Rate">
+		insert into rate
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="factoryRate != null">
+				factory_rate,
+			</if>
+			<if test="invaterRate != null">
+				invater_rate,
+			</if>
+			<if test="platformRate != null">
+				platform_rate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="factoryRate != null">
+				#{factoryRate,jdbcType=INTEGER},
+			</if>
+			<if test="invaterRate != null">
+				#{invaterRate,jdbcType=INTEGER},
+			</if>
+			<if test="platformRate != null">
+				#{platformRate,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+</mapper>

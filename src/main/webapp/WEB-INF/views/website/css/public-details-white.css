@@ -1,0 +1,49 @@
+/*左边导航*/
+.nav-left{
+	width: 196px;
+	float: left;
+}
+.nav-left,.content-right{
+	margin-top: 20px;
+}
+ul.nav-plane li {
+  	height: 40px;
+  	line-height: 40px;
+}
+.mobile{
+	padding-left: 20px;
+	color: #fff;
+	background-color: #4778c7;
+}
+.bg-white{
+	padding-left: 55px;
+	background-color: #fff;
+}
+
+.bg-white>a{
+	color: #414141;
+	text-indent: 12px;
+}
+.bg-white>a:hover{
+	color: #4778c7;
+}
+
+/*右边的内容*/
+.content-right{
+	width: 1005px;
+	min-height: 568px;
+	float: right;
+	background-color: #fff;
+}
+.line{
+	margin-top: 20px;
+	margin-left: 20px;
+	border-bottom: 2px solid #f2f2f2;
+}
+.btn-order {
+  	display: inline-block;
+  	background-color: #f2f2f2;
+  	width: 120px;
+  	text-align: center;
+  	padding: 10px;
+}

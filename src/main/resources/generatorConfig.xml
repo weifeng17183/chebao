@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry
+		location="C:\tool\apache-tomcat-8.0.36\webapps\chebao\WEB-INF\lib\mysql-connector-java-5.1.38.jar" />
+
+	<context id="testTables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://193.112.183.67:3306/chebao" userId="root"
+			password="ChebaoGuanjia@#$!9898@">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="com.justfind.entity"
+			targetProject="chebao/src/main/java">
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mybatis.mapping"
+			targetProject="chebao/src/main/resources" />
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.justfind.dao" targetProject="chebao/src/main/java" />
+
+		<!-- 1: selectByPrimaryKey 根据主键查询相关对象的记录 2: insertSelective: 动态插入功能 3: 
+			updateByPrimaryKeySelective 动态更新实现 4: deleteByPrimaryKey 根据主键自动更新 -->
+
+		<table tableName="factory" domainObjectName="Factory"
+			enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+			enableUpdateByPrimaryKey="true" enableCountByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false" enableInsert="true" />
+	</context>
+</generatorConfiguration>

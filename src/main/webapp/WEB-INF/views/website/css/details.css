@@ -1,0 +1,146 @@
+.plate-figure>img{
+	float: left;
+}
+.block{
+	width: 800px;
+	line-height: 40px;
+	#line-height:40px;/*兼容IE 7*/
+	float: right;
+}
+p.plate{
+	width: 316px;
+	margin-left: 474px;
+}
+p.plate .num,p.plate .phone{
+	display: inline-block;
+}
+p.plate .num{
+	text-align: center;
+}
+p.plate .phone{
+	width: 280px;
+	text-align: right;
+}
+article{
+	padding: 30px;
+	border-bottom: 1px solid #dbdbdb;
+}
+figure .goods-img{
+	width: 125px;
+  	height: 125px;
+}
+.bg-label{
+	margin:0 20px;
+	background-color: #f2f2f2;
+	height: 40px;
+	line-height: 40px;
+}
+.span1,.span2,.span3{
+	display: inline-block;
+}
+.span1{
+	text-indent: 38px;
+	width: 620px;
+	*width:580px;
+}
+.span2{
+	width: 242px;
+}
+.address-box{
+	height: 68px;
+	padding-left: 42px;
+  	margin-top: 20px;
+  	margin-left: 20px;
+  	line-height: 1.8;
+  	background: url("../img/img-wz.png") no-repeat 0 10px;
+}
+.plate-figure{
+	float: left;
+}
+.look-div{
+	text-align: right;
+}
+.look{
+	color:#fff;
+	border-radius:5px;
+	display: inline-block;
+	background-color: #4778c7;
+	padding: 0 15px;
+}
+.look:hover{
+	color: #fff;
+}
+ul>li.item-img{
+	float: left;
+	margin-top: 12px;
+	margin-left: 10px;
+	margin-bottom: 12px;
+}
+ul>li.item-img:first-child{
+	margin-left: 20px;
+}
+li.size{
+	width: 76px;
+	height: 76px;
+}
+.size>img{
+	width: 100%;
+	height: 100%;
+}
+.add-border{
+	width: 72px;
+	height: 76px;
+	display:table-cell;/*按照单元格的样式显示元素*/
+	vertical-align:bottom;/*底对齐*/
+	text-align: center;
+	top: 56px;
+	border: 1px solid #797979;
+	background:url("../img/add-icon.jpg") no-repeat 25px 24px;
+}
+.right15{
+	margin-left: 20px;
+	line-height: 2.8;
+}
+.right15 td label{ width:80px; display:block;float:left;}
+.right15 td select{height:25px;}
+.header25{float:left; line-height:28px;}
+.header28{height:28px;float:left; width:450px;margin:8px 0;line-height:28px;}
+.release-btn{
+	width: 120px;
+	line-height: 38px;
+	text-align: center;
+	color: #FFF;
+	background-color:#4778c7;
+	border-radius: 5px;
+	margin:50px;
+}
+.table1{
+	margin-top: 20px;
+	margin-left: 30px;
+	line-height: 2.8;
+	padding-bottom: 30px;
+}
+.table1 td label{ width:80px; display:block;float:left;}
+.table1 td select{height:25px;}
+.header25{height:28px;float:left; width:211px;margin-top: 6px;}
+.save,.cancel{
+	width: 120px;
+	line-height: 38px;
+	text-align: center;
+	color: #FFF;
+	background-color:#4778c7;
+	border-radius: 5px;
+	margin-right:30px;
+}
+.left80{ padding:50px 80px 0;}
+.suppliersign{width:945px;margin:20px 0; padding-left:38px; height:40px;}
+.suppliersign li{width:105px; float:left; margin-right:15px; }
+.suppliersign li a{ color:#353535; height:40px; line-height:40px;display:block;text-align:center;background:#f2f2f2; }
+.suppliersign li a:hover{color:#fff;background:#4778c7; display:block;}
+.suppliersign li a.current{color:#fff;display:block;background:#4778c7;}
+.suppliersign li a.current:hover{color:#fff;background:#4778c7;}
+
+.div-width{
+	margin: 20px 20px 0 0;
+    height: 50px;
+}

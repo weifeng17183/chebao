@@ -1,0 +1,30 @@
+
+.news{ width:965px; margin:20px 0 20px 20px;}
+.news dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.news dl span{ float:left; display:block; width:105px;text-align:center;}
+.news .time{ width:370px;}
+.news .operation{width:200px;}
+
+.news dd{float:left; display:block; width:889px;padding-left:38px;}
+.news dd span{ height:40px; line-height:40px;}
+.news img{ padding-top:15px;}
+.news input{+margin-top:10px;}
+
+
+.newssign{width:965px;margin:20px; padding-left:38px; height:40px;}
+.newssign li{ background:#4778c7; width:105px; float:left; margin-right:15px; }
+.newssign li a{ color:#fff; height:40px; line-height:40px;display:block;text-align:center;}
+.newssign li a:hover{color:#fff;}
+
+
+
+
+.Recruitment_Page{width:765px; background:#fff; padding:20px 0 15px 200px;float:left; color:#666}
+.Recruitment_Page ul{}
+.Recruitment_Page li{ float:left; display:block;line-height:40px; margin:0 5px;}
+.Recruitment_Page li a{ display:block; padding:0 15px;border:1px solid #e5e5e5; color:#666}
+.Recruitment_Page li a:hover{ display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Recruitment_Page .prev{display:block; padding:0 15px;background:#efefef; color:#999;border:1px solid #e5e5e5;}
+.Recruitment_Page .current a{display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Recruitment_Page .pageInput{line-height:40px; height:40px; width:44px;border:none; border:1px solid #e5e5e5;}
+.Recruitment_Page .pageBtn{height:40px; width:72px; background:#fff; border:none; border:1px solid #e5e5e5;}

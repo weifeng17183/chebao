@@ -1,0 +1,437 @@
+
+form {
+    color: #333;
+    font-family: Arial,sans-serif;
+    font-size: 84%;
+    line-height: 1.5;
+    margin: 0;
+}
+a {
+    color: #34538b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+input, select, textarea {
+    font-size: 100%;
+}
+#header {
+    height: 60px;
+    padding: 0 0 0 40px;
+}
+#header .logo {
+    float: left;
+    margin-top: 12px;
+    overflow: hidden;
+}
+#main {
+    background: #beceeb none repeat scroll 0 0;
+    overflow: hidden;
+    width: 100%;
+}
+#main h1 {
+    background: #c1d5eb none repeat scroll 0 0;
+    font-family: "楷体","微软雅黑";
+    font-size: 1.3em;
+    line-height: 40px;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #f2f2f2;
+}
+#body {
+    overflow: hidden;
+    padding: 0;
+}
+#body .part {
+    background: white none repeat scroll 0 0;
+    min-height: 500px;
+    width: 50%;
+}
+#code {
+    float: left;
+    margin-bottom: -999em;
+    margin-left: -1px;
+    padding-bottom: 999em;
+}
+#effect {
+    float: right;
+    margin-bottom: -999em;
+    margin-right: -1px;
+    padding-bottom: 999em;
+}
+#body h3 {
+    background: #f0f3f9 none repeat scroll 0 0;
+    border-bottom: 1px solid #ededed;
+    color: #4e4e4e;
+    font-size: 1.1em;
+    line-height: 30px;
+    margin: 0;
+    padding-left: 10px;
+    text-shadow: 0 1px 0 white;
+}
+#footer {
+    border-top: 1px solid #486aaa;
+    font-family: "Lucida Grande",Verdana,sans-serif;
+    line-height: 1.3;
+    padding: 15px 0;
+    text-align: center;
+    text-shadow: 1px 1px #cad5eb;
+}
+#footer::before {
+    background-color: #909baf;
+    color: #aaa;
+    content: ".";
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    position: relative;
+    top: -15px;
+}
+#footer img {
+    margin-bottom: -3px;
+}
+pre {
+    font-family: "simsun";
+}
+#ad {
+    height: 60px;
+    margin: 0 auto;
+    width: 468px;
+}
+.light {
+    background: #f0f3f9 none repeat scroll 0 0;
+}
+#content {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: white none repeat scroll 0 0;
+    border-color: #cad5eb;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 2px;
+    font-family: "Lucida Grande",Verdana;
+    min-height: 500px;
+}
+.article {
+    clear: both;
+    font-family: Arial;
+    font-size: 0.86em;
+    padding: 10px 0;
+}
+.article_new {
+    clear: both;
+    font-family: Arial;
+    font-size: 0.86em;
+    margin: -33px auto 0;
+    padding: 10px 0;
+    text-align: right;
+    width: 960px;
+}
+#back {
+    margin-top: -25px;
+    position: absolute;
+    right: 10px;
+}
+.upload_box {
+    margin: 1em auto;
+}
+.upload_main {
+    background-color: #fbfbfb;
+    border-color: #ccc #ccc #ddd;
+    border-style: solid;
+    border-width: 1px 1px 2px;
+}
+.upload_choose {
+    padding: 1em;
+}
+.upload_drag_area {
+    background: #fff none no-repeat scroll 20px center;
+    border: 1px dashed #ddd;
+    color: #999;
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 4em 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 63%;
+}
+.upload_drag_hover {
+    border-color: #069;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) inset;
+    color: #333;
+}
+.upload_preview {
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #d2d2d2;
+    overflow: hidden;
+}
+.upload_append_list {
+    float: left;
+    height: 100%;
+    margin: 1em;
+    position: relative;
+}
+.upload_append_list:hover {
+    cursor: pointer;
+}
+.upload_delete {
+    margin-left: 2em;
+}
+.upload_image {
+    padding: 0;
+}
+.upload_submit {
+    padding-left: 1em;
+    padding-top: 1em;
+}
+.upload_submit_btn {
+    display: none;
+    font-size: 14px;
+    height: 32px;
+}
+.upload_progress {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    color: #fff;
+    left: 25px;
+    padding: 5px;
+    position: absolute;
+    top: 45px;
+}
+.andArea {
+    background: rgba(0, 0, 0, 0) url("../images/add_img.png") no-repeat scroll center 5px;
+    border: 1px dashed #e6e6e6;
+    color: #cccccc;
+    font-size: 18px;
+    padding-top: 77px;
+    position: relative;
+    text-align: center;
+    top: 0;
+}
+.filePicker {
+    background: #00b7ee none repeat scroll 0 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    height: 44px;
+    line-height: 44px;
+    margin: 0 auto;
+    min-width: 120px;
+    overflow: hidden;
+    transition: background 0.2s ease 0s;
+    width: 90%;
+}
+.filePicker:hover {
+    background: #00a2d4 none repeat scroll 0 0;
+}
+.demo {
+    margin: auto;
+}
+.convent_choice {
+    float: left;
+    height: 130px;
+    width: 35%;
+}
+#fileImage {
+    display: none;
+}
+.status_bar {
+    background-color: #ffffff;
+    border-top: 1px solid #dadada;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 10px;
+    position: relative;
+    vertical-align: middle;
+}
+.info {
+    color: #666666;
+    display: inline-block;
+    float: left;
+}
+.btns {
+    line-height: 30px;
+    position: absolute;
+    right: 16px;
+    top: 6px;
+}
+.webuploader_pick {
+    -moz-user-select: none;
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    color: #565656;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    line-height: 32px;
+    margin-left: 10px;
+    padding: 0 18px;
+    position: relative;
+    text-align: center;
+    transition: border 0.2s ease 0s;
+}
+.webuploader_pick:hover {
+    border: 1px solid #bbb;
+}
+.upload_btn {
+    background: #00b7ee none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    line-height: 34px;
+    margin-left: 10px;
+    padding: 0 18px;
+    position: relative;
+    text-align: center;
+    transition: background 0.2s ease 0s;
+}
+.upload_btn:hover {
+    background: #00a2d4 none repeat scroll 0 0;
+}
+.file_bar {
+    background: #000000 none repeat scroll 0 0;
+    color: #fff;
+    height: 0;
+    left: 0;
+    margin: 0;
+    opacity: 0.8;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.5s ease 0s;
+}
+.file_bar a {
+    color: #ffffff;
+    position: absolute;
+    right: 10px;
+}
+.file_hover {
+    cursor: pointer;
+    height: 30px;
+}
+.uploadImg {
+    margin: 0;
+}
+.file_progress {
+    background: #00b7ee none repeat scroll 0 0;
+    bottom: 0;
+    display: none;
+    height: 8px;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 0;
+}
+.file_failure {
+    background: red none repeat scroll 0 0;
+    bottom: 0;
+    color: #fff;
+    display: none;
+    height: 24px;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+.file_success {
+    background: transparent url("../images/success.png") no-repeat scroll right bottom;
+    bottom: 0;
+    display: none;
+    height: 40px;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+}
+.file_name {
+    float: left;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 66%;
+}
+.file_edit {
+    -moz-user-select: none;
+    background: transparent url("../images/edit_white.png") no-repeat scroll 0 0;
+    display: inline;
+    height: 18px;
+    margin-top: 4px;
+    position: absolute;
+    right: 22px;
+    width: 18px;
+}
+.file_edit:hover {
+    background: transparent url("../images/edit_blue.png") no-repeat scroll 0 0;
+}
+.file_del {
+    -moz-user-select: none;
+    background: transparent url("../images/delete_white.png") no-repeat scroll 0 0;
+    display: inline;
+    height: 18px;
+    margin-top: 4px;
+    position: absolute;
+    right: 3px;
+    width: 18px;
+}
+.file_del:hover {
+    background: transparent url("../images/delete_blue.png") no-repeat scroll 0 0;
+}
+.upload_append_list a {
+    background: transparent url("../images/bg.png") no-repeat scroll center 0;
+    border: 1px solid #dfdfdf;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.upload_append_list img {
+    border: 1px solid #66f;
+    vertical-align: middle;
+}
+.uploadImg {
+    margin: auto;
+}
+.uploadImg img {
+    border: medium none;
+    height: auto !important;
+    max-width: 100% !important;
+}
+.add_upload {
+    float: left;
+    height: 100%;
+    margin: 1em;
+    position: relative;
+}
+.add_upload:hover {
+    cursor: pointer;
+}
+.add_imgBox {
+    border: 1px solid #dfdfdf;
+    display: table-cell;
+    text-align: center;
+    transition: border 0.2s ease 0s;
+    vertical-align: middle;
+}
+.add_imgBox:hover {
+    border: 1px solid #bbb;
+}
+.single_main {
+    border-top: 0 none;
+}

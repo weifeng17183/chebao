@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.CarImageMapper" >
+  <resultMap id="BaseResultMap" type="com.justfind.entity.CarImage" >
+    <id column="car_image_id" property="carImageId" jdbcType="INTEGER" />
+    <result column="car_id" property="carId" jdbcType="INTEGER" />
+    <result column="car_image_url" property="carImageUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    car_image_id, car_id, car_image_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from car_image
+    where car_image_id = #{carImageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car_image
+    where car_image_id = #{carImageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.justfind.entity.CarImage" >
+    insert into car_image (car_image_id, car_id, car_image_url
+      )
+    values (#{carImageId,jdbcType=INTEGER}, #{carId,jdbcType=INTEGER}, #{carImageUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.justfind.entity.CarImage" >
+    insert into car_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carImageId != null" >
+        car_image_id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="carImageUrl != null" >
+        car_image_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carImageId != null" >
+        #{carImageId,jdbcType=INTEGER},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="carImageUrl != null" >
+        #{carImageUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.CarImage" >
+    update car_image
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="carImageUrl != null" >
+        car_image_url = #{carImageUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_image_id = #{carImageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.justfind.entity.CarImage" >
+    update car_image
+    set car_id = #{carId,jdbcType=INTEGER},
+      car_image_url = #{carImageUrl,jdbcType=VARCHAR}
+    where car_image_id = #{carImageId,jdbcType=INTEGER}
+  </update>
+</mapper>

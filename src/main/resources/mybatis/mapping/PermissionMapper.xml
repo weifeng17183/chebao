@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.justfind.dao.PermissionMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.Permission">
+		<id column="permission_id" jdbcType="INTEGER" property="permissionId" />
+		<result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+		<result column="permission_sign" jdbcType="VARCHAR" property="permissionSign" />
+		<result column="path" jdbcType="VARCHAR" property="path" />
+		<result column="title_id" jdbcType="INTEGER" property="titleId" />
+
+		<association property="permissionTitle"
+			javaType="com.justfind.entity.PermissionTitle" column="title_id"
+			select="com.justfind.dao.PermissionTitleMapper.selectByPrimaryKey"></association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		permission_id, permission_name,
+		permission_sign,title_id,path
+	</sql>
+	<select id="selectByAdminId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT p.permission_id, p.permission_name,
+		p.permission_sign
+		FROM permission p
+		LEFT JOIN role_permission rp ON
+		p.permission_id = rp.permission_id
+		LEFT JOIN role r ON r.role_id =
+		rp.role_id
+		LEFT JOIN admin_role ur ON
+		r.role_id = ur.role_id
+		LEFT JOIN
+		admin u ON u.admin_id = ur.admin_id WHERE u.admin_id
+		=#{adminId,jdbcType=BIGINT}
+	</select>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from permission
+		where permission_id = #{permissionId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		permission
+		where permission_id = #{permissionId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.justfind.entity.Permission">
+		insert into permission
+		(permission_id, permission_name, permission_sign,title_id,path
+		)
+		values
+		(#{permissionId,jdbcType=INTEGER},
+		#{permissionName,jdbcType=VARCHAR},
+		#{permissionSign,jdbcType=VARCHAR},
+		#{titleId,jdbcType=INTEGER},
+		#{path,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.justfind.entity.Permission">
+		insert into permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="permissionId != null">
+				permission_id,
+			</if>
+			<if test="permissionName != null">
+				permission_name,
+			</if>
+			<if test="permissionSign != null">
+				permission_sign,
+			</if>
+			<if test="titleId != null">
+				title_id,
+			</if>
+			<if test="path != null">
+				path,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="permissionId != null">
+				#{permissionId,jdbcType=INTEGER},
+			</if>
+			<if test="permissionName != null">
+				#{permissionName,jdbcType=VARCHAR},
+			</if>
+			<if test="permissionSign != null">
+				#{permissionSign,jdbcType=VARCHAR},
+			</if>
+			<if test="titleId != null">
+				#{titleId,jdbcType=INTEGER},
+			</if>
+			<if test="path != null">
+				#{path,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.Permission">
+		update permission
+		<set>
+			<if test="permissionName != null">
+				permission_name = #{permissionName,jdbcType=VARCHAR},
+			</if>
+			<if test="permissionSign != null">
+				permission_sign = #{permissionSign,jdbcType=VARCHAR},
+			</if>
+			<if test="titleId != null">
+				title_id = #{titleId,jdbcType=INTEGER},
+			</if>
+			<if test="path != null">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where permission_id = #{permissionId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.justfind.entity.Permission">
+		update permission
+		set permission_name = #{permissionName,jdbcType=VARCHAR},
+		permission_sign = #{permissionSign,jdbcType=VARCHAR},
+		title_id =
+		#{titleId,jdbcType=INTEGER},
+		path = #{path,jdbcType=VARCHAR}
+		where
+		permission_id =
+		#{permissionId,jdbcType=INTEGER}
+	</update>
+	<select id="queryListAll" parameterType="com.justfind.entity.Permission"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from permission ORDER BY title_id ASC
+	</select>
+</mapper>

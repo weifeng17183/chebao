@@ -1,0 +1,66 @@
+.dialog_wrap{
+	border:1px solid #D5D5D5;
+	background:none repeat scroll 0 0 white;
+	display:none;
+	z-index: 1000;
+	position: absolute;
+	margin:0 auto;
+	width: 320px;
+	height: 320px;
+}
+.dialog_title{
+	background: none repeat scroll 0 0 #FCFCFC;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: move;
+	position: relative;
+	color: #333;
+	line-height: 20px;
+	height: 20px;
+	_height: auto;
+	padding-top: 8px;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #F2F2F2;
+}
+.dialog_title_inner{
+	margin-left: 20px;
+}
+.dialog_content{
+	padding:0 15px;
+	overflow:hidden;
+}
+.dialog_footer{
+	text-align: center;
+	overflow: hidden;
+	padding: 0 15px 10px;
+	margin-top:5px;
+	clear:both;
+}
+.dialog_close{
+	background:url("../images/X.png") repeat scroll transparent;
+	margin-top:11px;
+	cursor:pointer;
+	height:13px;
+	overflow:hidden;
+	position:absolute;
+	right:0;top:0;_top:-2px;_right:1px;width:14px;
+	margin-right:10px;
+}
+.dialog_close_hover{
+	background:url("../images/X_hover.png") repeat scroll transparent;
+}
+.dialog_selectwrap{
+	margin-top:2px;
+}
+.dialog_selectwrap dd{
+	margin-top:2px;
+}
+.coupon_query_select{
+	display:none;
+	width:130px;
+}
+.dialog_select{
+	width: 135px;
+	visibility: visible;
+	margin-right: 10px;
+}

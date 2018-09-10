@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.OrderItemMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.OrderItem">
+		<id column="item_id" property="itemId" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="product_id" property="productId" jdbcType="INTEGER" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="count" property="count" jdbcType="INTEGER" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="discount" property="discount" jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="item_amount" property="itemAmount" jdbcType="DECIMAL" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		item_id, order_id, product_id, product_name, count, price,
+		discount, status,
+		type,
+		item_amount
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from order_item
+		where item_id = #{itemId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByOrderIdAndProductId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from order_item
+		where order_id = #{orderId,jdbcType=INTEGER} and
+		product_id = #{productId,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		order_item
+		where item_id = #{itemId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.justfind.entity.OrderItem">
+		insert into order_item
+		(item_id, order_id, product_id,
+		product_name, count, price,
+		discount,
+		status, type,
+		item_amount)
+		values (#{itemId,jdbcType=INTEGER},
+		#{orderId,jdbcType=INTEGER},
+		#{productId,jdbcType=INTEGER},
+		#{productName,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER},
+		#{price,jdbcType=DECIMAL},
+		#{discount,jdbcType=DECIMAL},
+		#{status,jdbcType=INTEGER},
+		#{type,jdbcType=INTEGER},
+		#{itemAmount,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="com.justfind.entity.OrderItem">
+		insert into order_item
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="itemId != null">
+				item_id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="productId != null">
+				product_id,
+			</if>
+			<if test="productName != null">
+				product_name,
+			</if>
+			<if test="count != null">
+				count,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="discount != null">
+				discount,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="itemAmount != null">
+				item_amount,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="itemId != null">
+				#{itemId,jdbcType=INTEGER},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="productId != null">
+				#{productId,jdbcType=INTEGER},
+			</if>
+			<if test="productName != null">
+				#{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="count != null">
+				#{count,jdbcType=INTEGER},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="discount != null">
+				#{discount,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=INTEGER},
+			</if>
+			<if test="itemAmount != null">
+				#{itemAmount,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.OrderItem">
+		update order_item
+		<set>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="productId != null">
+				product_id = #{productId,jdbcType=INTEGER},
+			</if>
+			<if test="productName != null">
+				product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="count != null">
+				count = #{count,jdbcType=INTEGER},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="discount != null">
+				discount = #{discount,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="itemAmount != null">
+				item_amount = #{itemAmount,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where item_id = #{itemId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.justfind.entity.OrderItem">
+		update order_item
+		set order_id = #{orderId,jdbcType=INTEGER},
+		product_id =
+		#{productId,jdbcType=INTEGER},
+		product_name =
+		#{productName,jdbcType=VARCHAR},
+		count = #{count,jdbcType=INTEGER},
+		price = #{price,jdbcType=DECIMAL},
+		discount =
+		#{discount,jdbcType=DECIMAL},
+		status = #{status,jdbcType=INTEGER},
+		type = #{type,jdbcType=INTEGER},
+		item_amount =
+		#{itemAmount,jdbcType=DECIMAL}
+		where item_id =
+		#{itemId,jdbcType=INTEGER}
+	</update>
+</mapper>

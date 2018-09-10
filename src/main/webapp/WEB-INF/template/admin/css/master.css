@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+img{border:none;}
+html, body {height:100%;}
+.master{float:left;width:99%;font-family:Arial,Tahoma;}
+#master_c{width:100%;border:1px solid #94b6cf;overflow:hidden;background:url(../images/master_c.jpg) repeat-x;float:left;margin:0 auto;position:relative;}
+
+
+.master_wel{width:420px;height:180px;overflow:hidden;position:absolute;top:50%;;left:50%;margin:-90px 0 0 -210px;text-align:center; }
+.master_txt{width:100%;color:#333;font-size:24px;display:block;line-height:80px;font-weight:bolder;letter-spacing:2px;}
+

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.OrderMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.Order">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+		<result column="car_status" property="carStatus" jdbcType="INTEGER" />
+		<result column="assess_status" property="assessStatus"
+			jdbcType="INTEGER" />
+		<result column="order_user_id" property="orderUserId" jdbcType="INTEGER" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="car_id" property="carId" jdbcType="INTEGER" />
+		<result column="address_id" property="addressId" jdbcType="INTEGER" />
+		<result column="factory_id" property="factoryId" jdbcType="INTEGER" />
+		<result column="back_address_id" property="backAddressId"
+			jdbcType="INTEGER" />
+		<result column="amount" property="amount" jdbcType="DECIMAL" />
+		<result column="transaction_id" property="transactionId"
+			jdbcType="VARCHAR" />
+		<result column="unified_order_result_id" property="unifiedOrderResultId"
+			jdbcType="INTEGER" />
+
+
+		<association property="factory" javaType="com.justfind.entity.Factory"
+			column="factory_id" select="com.justfind.dao.FactoryMapper.selectByPrimaryKey"></association>
+		<association property="carInfo" javaType="com.justfind.entity.CarInfo"
+			column="car_id" select="com.justfind.dao.CarInfoMapper.selectByPrimaryKey"></association>
+		<association property="userAddress" javaType="com.justfind.entity.UserAddress"
+			column="address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
+		<association property="backAddress" javaType="com.justfind.entity.UserAddress"
+			column="back_address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
+		<association property="user" javaType="com.justfind.entity.Users"
+			column="user_id" select="com.justfind.dao.UsersMapper.selectByPrimaryKey"></association>
+		<association property="orderUser" javaType="com.justfind.entity.Users"
+			column="order_user_id" select="com.justfind.dao.UsersMapper.selectByPrimaryKey"></association>
+		<collection property="itemList" ofType="com.justfind.entity.OrderItem"
+			select="selectItemList" column="id"></collection>
+		<collection property="imageList" ofType="com.justfind.entity.OrderImage"
+			select="selectImageList" column="id"></collection>
+	</resultMap>
+
+	<resultMap id="SimpleMap" type="com.justfind.entity.Order">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+		<result column="car_status" property="carStatus" jdbcType="INTEGER" />
+		<result column="order_user_id" property="orderUserId" jdbcType="INTEGER" />
+		<result column="memo" property="memo" jdbcType="VARCHAR" />
+		<result column="car_id" property="carId" jdbcType="INTEGER" />
+		<result column="address_id" property="addressId" jdbcType="INTEGER" />
+		<result column="back_address_id" property="backAddressId"
+			jdbcType="INTEGER" />
+		<result column="amount" property="amount" jdbcType="DECIMAL" />
+		<result column="transaction_id" property="transactionId"
+			jdbcType="VARCHAR" />
+		<result column="unified_order_result_id" property="unifiedOrderResultId"
+			jdbcType="INTEGER" />
+		<result column="assess_status" property="assessStatus"
+			jdbcType="INTEGER" />
+
+		<association property="userAddress" javaType="com.justfind.entity.UserAddress"
+			column="address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
+		<association property="backAddress" javaType="com.justfind.entity.UserAddress"
+			column="back_address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
+		<association property="carInfo" javaType="com.justfind.entity.CarInfo"
+			column="car_id" select="com.justfind.dao.CarInfoMapper.selectByPrimaryKey"></association>
+		<association property="orderUser" javaType="com.justfind.entity.Users"
+			column="order_user_id" select="com.justfind.dao.UsersMapper.selectByPrimaryKey"></association>
+		<collection property="itemList" ofType="com.justfind.entity.OrderItem"
+			select="selectItemList" column="id"></collection>
+	</resultMap>
+
+	<select id="selectItemList" parameterType="java.lang.Integer"
+		resultMap="com.justfind.dao.OrderItemMapper.BaseResultMap">
+		SELECT * FROM order_item WHERE order_id = #{id}
+	</select>
+
+	<select id="selectImageList" parameterType="java.lang.Integer"
+		resultMap="com.justfind.dao.OrderImageMapper.BaseResultMap">
+		SELECT * FROM order_image WHERE order_id = #{id}
+	</select>
+
+	<sql id="Base_Column_List">
+		id, order_id, user_id, create_time, update_time,
+		pay_status,car_status, order_user_id, memo,
+		car_id,unified_order_result_id,
+		address_id,
+		amount,transaction_id,assess_status,back_address_id
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from `order`
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="queryOrderList" resultMap="SimpleMap"
+		parameterType="com.justfind.entity.Order">
+		select *
+		from `order` a LEFT JOIN users b ON a.`user_id` = b.`user_id`
+		LEFT JOIN users c ON a.`order_user_id` = c.`user_id`
+		LEFT JOIN car_info
+		d ON a.`car_id` = d.`car_id`
+		<where>
+			<if test="payStatus != null">
+				and a.pay_status = #{payStatus}
+			</if>
+			<if test="userId != null">
+				and a.user_id = #{userId}
+			</if>
+			<if test="orderUserId != null">
+				and a.order_user_id = #{orderUserId}
+			</if>
+			<if test="factoryId != null">
+				and a.factory_id = #{factoryId}
+			</if>
+			<if test="beginDate != null">
+				and a.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				and a.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+
+	<select id="querySettlementList" resultMap="BaseResultMap"
+		parameterType="com.justfind.entity.Order">
+		select *
+		from `order` a LEFT JOIN users b ON a.`user_id` = b.`user_id`
+		LEFT JOIN users c ON a.`order_user_id` = c.`user_id`
+		LEFT JOIN car_info
+		d ON a.`car_id` = d.`car_id`
+		<where>
+			<if test="payStatus != null">
+				and a.pay_status &gt;= #{payStatus}
+			</if>
+			<if test="carStatus != null">
+				and a.car_status = #{carStatus}
+			</if>
+			<if test="userId != null">
+				and a.user_id = #{userId}
+			</if>
+			<if test="orderUserId != null">
+				and a.order_user_id = #{orderUserId}
+			</if>
+			<if test="factoryId != null">
+				and a.factory_id = #{factoryId}
+			</if>
+			<if test="beginDate != null">
+				and a.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				and a.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+
+	<select id="queryList" resultMap="BaseResultMap" parameterType="com.justfind.entity.Order">
+		select *
+		from `order` a LEFT JOIN users b ON a.`user_id` = b.`user_id`
+		LEFT JOIN users c ON a.`order_user_id` = c.`user_id`
+		LEFT JOIN car_info
+		d ON a.`car_id` = d.`car_id`
+		<where>
+			<if test="carInfo != null and carInfo.carNumber != null">
+				and d.car_number like '%${carInfo.carNumber}%'
+			</if>
+			<if test="user != null and user.name != null">
+				and (
+				b.name LIKE CONCAT('%',#{user.name},'%') or
+				b.mobile_num LIKE CONCAT('%',#{user.name},'%')
+				)
+			</if>
+			<if test="orderUser != null and orderUser.name != null">
+				and (
+				c.name LIKE CONCAT('%',#{orderUser.name},'%') or
+				c.mobile_num LIKE CONCAT('%',#{orderUser.name},'%')
+				)
+			</if>
+			<if test="orderId != null">
+				and a.order_id like '%${orderId}%'
+			</if>
+			<if test="payStatus != null">
+				and a.pay_status = #{payStatus}
+			</if>
+			<if test="factoryId != null">
+				and a.factory_id = #{factoryId}
+			</if>
+			<if test="beginDate != null">
+				and a.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				and a.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by a.create_time desc
+	</select>
+
+
+	<select id="selectByOrderId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from `order`
+		where order_id = #{orderId,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		`order`
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.justfind.entity.Order">
+		insert into `order`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="payStatus != null">
+				pay_status,
+			</if>
+			<if test="carStatus != null">
+				car_status,
+			</if>
+			<if test="assessStatus != null">
+				assess_status,
+			</if>
+			<if test="orderUserId != null">
+				order_user_id,
+			</if>
+			<if test="memo != null">
+				memo,
+			</if>
+			<if test="carId != null">
+				car_id,
+			</if>
+			<if test="addressId != null">
+				address_id,
+			</if>
+			<if test="backAddressId != null">
+				back_address_id,
+			</if>
+			<if test="amount != null">
+				amount,
+			</if>
+			<if test="unifiedOrderResultId != null">
+				unified_order_result_id,
+			</if>
+			<if test="transactionId != null">
+				transaction_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="payStatus != null">
+				#{payStatus,jdbcType=INTEGER},
+			</if>
+			<if test="carStatus != null">
+				#{carStatus,jdbcType=INTEGER},
+			</if>
+			<if test="assessStatus != null">
+				#{assessStatus,jdbcType=INTEGER},
+			</if>
+			<if test="orderUserId != null">
+				#{orderUserId,jdbcType=INTEGER},
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="carId != null">
+				#{carId,jdbcType=INTEGER},
+			</if>
+			<if test="addressId != null">
+				#{addressId,jdbcType=INTEGER},
+			</if>
+			<if test="backAddressId != null">
+				#{backAddressId,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				#{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedOrderResultId != null">
+				#{unifiedOrderResultId,jdbcType=INTEGER},
+			</if>
+			<if test="transactionId != null">
+				#{transactionId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.Order">
+		update `order`
+		<set>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="payStatus != null">
+				pay_status = #{payStatus,jdbcType=INTEGER},
+			</if>
+			<if test="carStatus != null">
+				car_status = #{carStatus,jdbcType=INTEGER},
+			</if>
+			<if test="assessStatus != null">
+				assess_status = #{assessStatus,jdbcType=INTEGER},
+			</if>
+			<if test="orderUserId != null">
+				order_user_id = #{orderUserId,jdbcType=INTEGER},
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="carId != null">
+				car_id = #{carId,jdbcType=INTEGER},
+			</if>
+			<if test="addressId != null">
+				address_id = #{addressId,jdbcType=INTEGER},
+			</if>
+			<if test="factoryId != null">
+				factory_id = #{factoryId,jdbcType=INTEGER},
+			</if>
+			<if test="backAddressId != null">
+				back_address_id = #{backAddressId,jdbcType=INTEGER},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="unifiedOrderResultId != null">
+				unified_order_result_id =
+				#{unifiedOrderResultId,jdbcType=INTEGER},
+			</if>
+			<if test="transactionId != null">
+				transaction_id = #{transactionId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

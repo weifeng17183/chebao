@@ -1,0 +1,17 @@
+.plate{
+	width: 790px;
+	background:#f2f2f2;
+	height:60px;
+	padding:13px;
+}
+.plate>li{
+	width: 197px;
+	line-height: 2.4;
+	float: left;
+}
+.prices{
+	color: #ff4400;
+}
+.colors{
+	color: #6c6c6c;
+}

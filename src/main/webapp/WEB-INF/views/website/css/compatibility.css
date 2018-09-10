@@ -1,0 +1,4 @@
+/*解决兼容性*/
+body{
+	text-align: center;/*解决ie8以下不居中*/
+}

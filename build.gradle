@@ -1,0 +1,98 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+     	maven{ url 'http://maven.oschina.net/content/groups/public/'}
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+
+war {
+    baseName = 'chebao'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+	compile "com.alibaba:fastjson:1.2.28"
+    compile("org.springframework.boot:spring-boot-starter-jersey")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile "com.atomikos:atomikos-util:4.0.0M4"
+    compile "com.atomikos:transactions-jta:4.0.0M4"
+    compile "com.atomikos:transactions-jdbc:4.0.0M4"
+    compile "com.atomikos:transactions-api:4.0.0M4"
+    compile "com.atomikos:transactions:4.0.0M4"
+    compile "cglib:cglib-nodep:3.2.0"
+    compile "org.aspectj:aspectjweaver:1.8.7"
+    compile "javax.transaction:jta:1.1"
+    compile "mysql:mysql-connector-java:5.1.37"
+    compile 'org.mybatis:mybatis:3.3.0'
+    compile 'org.mybatis:mybatis-spring:1.2.3'
+    compile 'com.alibaba:druid:1.0.16'
+    compile 'mysql:mysql-connector-java:5.1.38'
+    compile 'commons-fileupload:commons-fileupload:1.3.1'
+    compile 'org.springframework.data:spring-data-commons:1.11.2.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.0.RELEASE'
+    compile 'jstl:jstl:1.2'
+   	compile 'javax.servlet.jsp:jsp-api:2.2.1-b03'
+   	compile 'cn.jpush.api:jpush-client:3.1.3'
+   	compile 'com.google.code.gson:gson:2.2.4'
+   	compile 'org.apache.poi:poi:3.14'
+    compile	'org.apache.poi:poi-ooxml:3.14'
+    compile group: 'org.apache.ant', name: 'ant', version: '1.10.1'
+   	
+   	
+
+   	
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.1.7.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.1.7.RELEASE'
+    compile group: 'org.jboss.logging', name: 'jboss-logging', version: '3.3.0.Final'
+    compile group: 'org.jboss.logmanager', name: 'jboss-logmanager', version: '2.0.3.Final'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    compile group: 'jdom', name: 'jdom', version: '1.1'
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.3.1'
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.3.2'
+    compile group: 'org.apache.shiro', name: 'shiro-quartz', version: '1.3.2'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.3.2'
+    
+    
+    
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    testCompile("org.springframework.boot:spring-boot-starter-test") 
+}
+
+
+eclipse {
+    classpath {
+         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+        // containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

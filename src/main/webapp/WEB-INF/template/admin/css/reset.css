@@ -1,0 +1,13 @@
+/*重置样式*/
+body,ul,li,p,a,img,figure,article,section,footer,header,div,span,i,h1,h2,h3,dd,dt,dl{margin: 0;padding: 0;font-size: 14px;font-family: "微软雅黑";}
+a{color: #4c4c4c;text-decoration: none;display: inline-block;}
+a:hover{color: #FF7300;}
+input{outline: none; vertical-align:middle;}
+h1,h2,h3{font-weight: normal;}
+em,i{font-style:normal}
+input[type="button"]{border: 0;outline: none;}
+figure{display: inline-block;}
+ol,ul,li{list-style: none;}
+body{background-color: #f6f6f6;}
+img{border: none;}
+

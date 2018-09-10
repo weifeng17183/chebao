@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.StuffTypeMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.StuffType">
+		<id column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="stuff_type_name" property="stuffTypeName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="ListMap" type="com.justfind.entity.StuffType">
+		<id column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="stuff_type_name" property="stuffTypeName"
+			jdbcType="VARCHAR" />
+		<collection property="productList" column="stuff_type_id"
+			select="selectProductList" ofType="com.justfind.entity.Product"></collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		stuff_type_id, stuff_type_name
+	</sql>
+
+	<select id="selectProductList" resultMap="com.justfind.dao.ProductMapper.SimpleMap"
+		parameterType="java.lang.Integer">
+		select *
+		from product
+		where stuff_type_id =
+		#{stuffTypeId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from stuff_type
+		where stuff_type_id = #{stuffTypeId,jdbcType=INTEGER}
+	</select>
+
+	<select id="getProductList" resultMap="ListMap" parameterType="java.lang.Integer">
+		select *
+		from stuff_type
+	</select>
+
+	<select id="selectByName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from stuff_type
+		where stuff_type_name =
+		#{stuffTypeName,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryList" resultMap="BaseResultMap" parameterType="com.justfind.entity.StuffType">
+		select
+		<include refid="Base_Column_List" />
+		from stuff_type
+		<where>
+			<if test="stuffTypeId != null">
+				and stuff_type_id=#{stuffTypeId,jdbcType=INTEGER}
+			</if>
+			<if test="stuffTypeName != null">
+				and stuff_type_name=#{stuffTypeName,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		stuff_type
+		where stuff_type_id = #{stuffTypeId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.justfind.entity.StuffType">
+		insert into stuff_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="stuffTypeId != null">
+				stuff_type_id,
+			</if>
+			<if test="stuffTypeName != null">
+				stuff_type_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="stuffTypeId != null">
+				#{stuffTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="stuffTypeName != null">
+				#{stuffTypeName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.StuffType">
+		update stuff_type
+		<set>
+			<if test="stuffTypeName != null">
+				stuff_type_name = #{stuffTypeName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where stuff_type_id = #{stuffTypeId,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from stuff_type
+	</select>
+</mapper>

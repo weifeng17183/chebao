@@ -1,0 +1,11 @@
+
+.regsiter{ width:100%; height:auto; float:left; background:#fff; padding:5% 0;}
+.regsiter li{width:100%;float:left; display:block;}
+.regsiter .searchTxt{ border-bottom:1px solid #e1e1e1;height:50px;}
+.regsiter .searchTxt input{width:60%; margin-left:0;left:0; top:0;border:none; height:50px; line-height:50px;font-size:14px; padding-left:5%}
+.regsiter .btn{ width:90%; height:50px; padding:20px;}
+.regsiter .btn input{width:100%; height:50px; background:#009900; border:none; color:#fff; font-size:14px;order-width:1px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+.regsiter .Click{ width:95%%; height:30px;padding:5% 5% 0;font-size:14px;}
+.regsiter .Click input{width:20px;}
+.note{ width:94%; height:auto; float:left; padding:3% 3%; background:#fff; text-align:center;}
+.note a{ color:#009900; line-height:26px;}

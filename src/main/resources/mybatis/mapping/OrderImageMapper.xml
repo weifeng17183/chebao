@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.OrderImageMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.OrderImage">
+		<id column="order_image_id" property="orderImageId" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="order_image_url" property="orderImageUrl"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		order_image_id, order_id, order_image_url
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from order_image
+		where order_image_id = #{orderImageId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from order_image
+		where order_image_id = #{orderImageId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.justfind.entity.OrderImage">
+		insert into order_image (order_image_id, order_id, order_image_url
+		)
+		values (#{orderImageId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER},
+		#{orderImageUrl,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.justfind.entity.OrderImage">
+		insert into order_image
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderImageId != null">
+				order_image_id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="orderImageUrl != null">
+				order_image_url,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orderImageId != null">
+				#{orderImageId,jdbcType=INTEGER},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="orderImageUrl != null">
+				#{orderImageUrl,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.OrderImage">
+		update order_image
+		<set>
+			<if test="orderId != null">
+				order_id = #{orderId,jdbcType=INTEGER},
+			</if>
+			<if test="orderImageUrl != null">
+				order_image_url = #{orderImageUrl,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where order_image_id = #{orderImageId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.justfind.entity.OrderImage">
+		update order_image
+		set order_id = #{orderId,jdbcType=INTEGER},
+		order_image_url = #{orderImageUrl,jdbcType=VARCHAR}
+		where order_image_id = #{orderImageId,jdbcType=INTEGER}
+	</update>
+</mapper>

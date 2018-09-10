@@ -1,0 +1,11 @@
+body{margin:0;padding:0;font-family:Arial, Helvetica, sans-serif, "宋体";font-size:12px;}
+ h1{margin:0;padding:20px 0;font-size:16px;}
+ ol{padding-left:20px;line-height:130%;}
+ .gray{color:gray;}/*download by http://www.codefans.net*/
+ .ac_results {background:#fff;border:1px solid #b99b7f;position: absolute;z-index: 10000;display: none;width:180px;text-align:left;height:auto;overflow:hidden;font-size:11px; }
+ .ac_results ul{margin:0;padding:0;list-style:none; line-height:20px;}
+ .ac_results li a{white-space: nowrap;text-decoration:none;display:block;color:#05a;padding:1px 3px;}
+.ac_results li{border:1px solid #fff;}
+.ac_over,.ac_results li a:hover {background:#fce1c8;}
+.ac_results li a span{float:right;}
+.ac_result_tip{border-bottom:1px dashed #666;padding:3px;}

@@ -1,0 +1,67 @@
+/*通用样式*/
+.look-box,.goods,.header {
+	padding: 3%;
+}
+.header {
+    color: #333;
+}
+span.end {
+    text-align: right;
+    width: 50%;
+    display: inline-block;
+}
+span.endTitme {
+	font-weight: bold;
+    color: #ff0000;
+}
+span.xname {
+    background: url("../images/list-icon_03.jpg") no-repeat 147px -1px;
+    background-size: 14px;
+    width: 48%;
+    display: inline-block;
+}
+.mian-list{
+	background-color:#f1f1f1;
+}
+.banner img{
+	width: 30%;
+	padding: 2%;
+	float: left;
+}
+p.goodsName {
+	padding-top: 8%;
+    padding-bottom: 14%;
+}
+.p.goodsName,.num{
+	color: #333;
+}
+.r{
+	float: right;
+	width: 64%;
+}
+.goods{
+	text-align: right;
+}
+.look-box{
+	text-align: right;
+}
+.cancel{
+	background-color: #ff0000;
+	color: #fff;
+}
+.look{
+	margin-left: 4%;
+	color: #333;
+	border: 1px solid #9a9a9a;
+}
+.cancel,.look,.past-cancel{
+	display: inline-block;
+	padding: 2%;
+	border-radius: 5px;
+}
+.past-cancel{
+	color: #fff;
+	background-color: #999;
+}
+
+

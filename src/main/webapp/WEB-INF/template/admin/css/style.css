@@ -1,0 +1,36 @@
+/*全局公共CSS*/
+html,body{-webkit-text-size-adjust:none; background:#f0f0f0}
+*{margin:0; padding:0;}
+body,div,li,h2,dl,dt,dd{margin:0;padding:0;font-size:0.9rem;color:#333;font-weight:normal;font-family:Verdana,"微软雅黑";}
+img{border:0;vertical-align:top;}
+ul,li{list-style-type:none;}
+.docBody{margin:0 auto; clear:both; width:100%;}
+.gray {color: #999;}
+.red {color: #fa5f41;}
+
+/*工厂预览*/
+.factoryCon{ width:96%; background:#fff; margin:2%; padding:10px 0;}
+.factoryCon h2{ width:100%; text-align:center; color:#fa5f41; font-size:1rem;}
+.factoryCon img{ width:21px; height:21px; vertical-align:middle; padding-right:10px;}
+.factoryCon li{ line-height:2rem;width:94%; padding:0 3%;}
+.red { color: #fa5f41;}
+.factoryImg{ width:100%; background:#fff;padding:10px 0;}
+.factoryImg h2{ width:100%; text-align:center;font-size:1rem;}
+.factoryImg{float:left;}
+.factoryImg li{ margin-top:15px;}
+.factoryImg img{ width:100%;}
+
+/*订单详情*/
+.shoes{ width:100%; background:#fff;float:left; margin-bottom:15px;}
+.shoes dl{width:94%; padding:3%;float:left;}
+.shoes dt{ width:30%;float:left;}
+.shoes dt img{ width:100%;}
+.shoes dd{ width:67%; padding-left:3%; float:left; line-height:1.8em;}
+.shoes h2{width:94%; padding:0 3%;float:left; border-bottom:1px solid #d7d7d7;line-height:40px;}
+.bor1s{border-bottom:1px solid #d7d7d7;}
+
+
+
+
+
+

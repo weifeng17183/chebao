@@ -1,0 +1,65 @@
+
+/*已发货*/
+.grouphair{ width:965px; margin-left:20px;}
+.grouphair dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.grouphair dl span{ float:left; display:block; width:440px;}
+.grouphair .operation{text-align:right; padding-right:90px;width:350px;}
+.grouphair .see em{ background:#ff0000; border-radius:5px/5px; text-align:center;display:block;width:100px;line-height:35px; margin-top:50px;margin-left:15px; float:right;}
+.grouphair .see em a{color:#fff;display:block;text-align:center;}
+.grouphair dd{float:left; display:block; width:889px;padding:20px 38px; border-bottom:1px solid #dbdbdb;}
+.grouphair dd span{ height:125px; line-height:125px;}
+.grouphair dd span a{ color:#333;}
+.grouphair dd span img{ padding-right:10px; float:left;}
+.grouphair dd span p{line-height:26px;padding-top:25px; width:160px; float:left; text-align:left;}
+/*已发货结束*/
+
+/*已收货*/
+.groupcollect{ width:965px; margin-left:20px;}
+.groupcollect dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.groupcollect dl span{ float:left; display:block; width:440px;}
+.groupcollect .operation{text-align:right; padding-right:40px;width:400px;}
+.groupcollect .see em{ background:#ff0000; border-radius:5px/5px; text-align:center;display:block;width:100px;line-height:35px; margin-top:50px;margin-left:15px; float:right;}
+.groupcollect .see em a{color:#fff;display:block;text-align:center;}
+
+.groupcollect dd{float:left; display:block; width:889px;padding:20px 38px; border-bottom:1px solid #dbdbdb;}
+.groupcollect dd span{ height:125px; line-height:125px;}
+.groupcollect dd span a{ color:#333;}
+.groupcollect dd span img{ padding-right:10px; float:left;}
+.groupcollect dd span p{line-height:26px;padding-top:25px; width:160px; float:left; text-align:left;}
+/*已收货结束*/
+
+.group{ width:965px; margin:0 20px;}
+.group dt{float:left; display:block; width:889px;height:40px;line-height:40px; background:#f2f2f2;padding:0 38px;}
+.group dl span{ float:left; display:block; width:296px;}
+.group .time{ text-align:center;}
+.group .operation{text-align:right; padding-right:90px;width:206px;}
+.group .mygroup em{ background:#ff0000; border-radius:5px/5px; text-align:center;display:block;width:100px;line-height:35px; margin-top:50px;margin-left:15px; float:right;}
+.group .mygroup em a{color:#fff;display:block;text-align:center;}
+.group .mygroup .ash{ background:#a1a1a1; border-radius:5px/5px; text-align:center;display:block;width:100px;line-height:35px; margin-left:15px; color:#fff;}
+
+.group dd{float:left; display:block; width:889px;padding:20px 38px; border-bottom:1px solid #dbdbdb;}
+.group dd span{ height:125px; line-height:125px;}
+.group dd span a{ color:#333;}
+.group dd span img{ padding-right:10px; float:left;}
+.group dd span p{line-height:26px;padding-top:25px; width:160px; float:left; text-align:left;}
+
+
+.groupsign{width:945px;margin:20px 0; padding-left:38px; height:40px; float:left;}
+.groupsign li{width:105px; float:left; margin-right:15px; }
+.groupsign li a{ color:#353535; height:40px; line-height:40px;display:block;text-align:center;background:#f2f2f2; }
+.groupsign li a:hover{color:#fff;background:#4778c7; display:block;}
+.groupsign li a.current{color:#fff;display:block;background:#4778c7;}
+.groupsign li a.current:hover{color:#fff;background:#4778c7;}
+
+
+
+
+.Recruitment_Page{width:765px; background:#fff; padding:20px 0 15px 200px;float:left; color:#666;}
+.Recruitment_Page li{ float:left; display:block;line-height:40px; margin:0 5px;}
+/*.Recruitment_Page li a{ display:block; padding:0 15px;border:1px solid #e5e5e5; color:#666}
+.Recruitment_Page li a:hover{ display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}*/
+.Recruitment_Page .prev{display:block; padding:0 15px;background:#efefef; color:#999;border:1px solid #e5e5e5;}
+.Recruitment_Page .current a{display:block; padding:0 15px;background:#ff7300; color:#fff;border:1px solid #ff7300;}
+.Recruitment_Page .pageInput{line-height:40px; height:40px; width:44px;border:none; border:1px solid #e5e5e5;}
+.Recruitment_Page .pageBtn{height:40px; width:72px; background:#fff; border:none; border:1px solid #e5e5e5;}
+

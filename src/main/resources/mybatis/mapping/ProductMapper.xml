@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.justfind.dao.ProductMapper">
+	<resultMap id="BaseResultMap" type="com.justfind.entity.Product">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="discount" property="discount" jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="second_type_id" property="secondTypeId"
+			jdbcType="INTEGER" />
+		<association property="secondType" column="second_type_id"
+			javaType="com.justfind.entity.SecondType" select="com.justfind.dao.SecondTypeMapper.selectByPrimaryKey"></association>
+		<association property="stuffType" column="stuff_type_id"
+			javaType="com.justfind.entity.StuffType" select="com.justfind.dao.StuffTypeMapper.selectByPrimaryKey"></association>
+	</resultMap>
+	
+	<resultMap id="SimpleMap" type="com.justfind.entity.Product">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="discount" property="discount" jdbcType="DECIMAL" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="stuff_type_id" property="stuffTypeId" jdbcType="INTEGER" />
+		<result column="second_type_id" property="secondTypeId"
+			jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, product_name, price, discount, status, create_time,
+		update_time,
+		stuff_type_id,
+		second_type_id
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from product
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from product
+		where product_name = #{productName,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryList" resultMap="BaseResultMap" parameterType="com.justfind.entity.Product">
+		select
+		<include refid="Base_Column_List" />
+		from product
+		<where>
+			<if test="stuffTypeId != null">
+				and stuff_type_id = #{stuffTypeId}
+			</if>
+			<if test="secondTypeId != null">
+				and second_type_id = #{secondTypeId}
+			</if>
+			<if test="status != null">
+				and status = #{status}
+			</if>
+			<if test="productName != null">
+				and product_name like '%${productName}%'
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		product
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insertSelective" parameterType="com.justfind.entity.Product">
+		insert into product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="productName != null">
+				product_name,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="discount != null">
+				discount,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="stuffTypeId != null">
+				stuff_type_id,
+			</if>
+			<if test="secondTypeId != null">
+				second_type_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="productName != null">
+				#{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="discount != null">
+				#{discount,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="stuffTypeId != null">
+				#{stuffTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="secondTypeId != null">
+				#{secondTypeId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.justfind.entity.Product">
+		update product
+		<set>
+			<if test="productName != null">
+				product_name = #{productName,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				price = #{price,jdbcType=DECIMAL},
+			</if>
+			<if test="discount != null">
+				discount = #{discount,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="stuffTypeId != null">
+				stuff_type_id = #{stuffTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="secondTypeId != null">
+				second_type_id = #{secondTypeId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

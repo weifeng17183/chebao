@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+.mbox{width:190px;float:left;position:relative;}
+.mbox li{list-style:none;}
+.mbox .mbox_top,.mbox_search{float:left;height:32px;line-height:32px;padding-left:10px;width:190px;background:url(../images/mbox_01.jpg) 0 0 no-repeat;}
+.mbox .mbox_search input{width:100px;}
+.mbox .mbox_c{float:left;width:186px;min-height:180px!important;height:180px;background:url(../images/mbox_02.gif) repeat-y;padding:2px;overflow:auto;}
+.mbox .mbox_bottom{position:relative;float:left;height:35px;width:190px;background:url(../images/mbox_01.jpg) 0 -65px no-repeat;display:inline;}
+.mbox_bottom .surebut{float: left;width: 50px;position:absolute;top:5px;left:10px;}
+.mbox_bottom .canclebut{float: right;width: 50px;position:absolute;top:5px;right:10px;}
+.mbox .mark{margin-right: 10px;float:left;}
