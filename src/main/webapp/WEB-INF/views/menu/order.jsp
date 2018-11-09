@@ -11,7 +11,7 @@
 				<dt>
 					<span>订单管理&nbsp;</span>
 				</dt>
-				<shiro:hasPermission name="order:relist">
+				<shiro:hasPermission name="order:relist or order:list">
 					<dd>
 						<a href="${base}/admin/order/list" target="mainFrame">订单列表</a>
 					</dd>

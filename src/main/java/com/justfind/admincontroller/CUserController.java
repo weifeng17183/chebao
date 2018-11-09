@@ -83,6 +83,9 @@ public class CUserController extends BaseController {
 	public String save(HttpServletRequest request, Model model, Users users, CarInfo carInfo) {
 		try {
 			usersService.updateByPrimaryKeySelective(users);
+			if (users.getPassword() != null) {
+				usersService.updatePass(users);
+			}
 			model.addAttribute("message", "修改成功！");
 			model.addAttribute("redirectUrl", "admin/cuser/list?userType=0");
 			return SUCCESS;
@@ -115,6 +118,9 @@ public class CUserController extends BaseController {
 	public String saveConductor(HttpServletRequest request, Model model, Users users) {
 		try {
 			usersService.updateByPrimaryKeySelective(users);
+			if (users.getPassword() != null) {
+				usersService.updatePass(users);
+			}
 			model.addAttribute("message", "修改成功！");
 			model.addAttribute("redirectUrl", "admin/cuser/conductorList?userType=1");
 			return SUCCESS;

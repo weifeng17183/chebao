@@ -69,6 +69,8 @@
 			column="address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
 		<association property="backAddress" javaType="com.justfind.entity.UserAddress"
 			column="back_address_id" select="com.justfind.dao.UserAddressMapper.selectByPrimaryKey"></association>
+		<association property="user" javaType="com.justfind.entity.Users"
+			column="user_id" select="com.justfind.dao.UsersMapper.selectByPrimaryKey"></association>
 		<association property="carInfo" javaType="com.justfind.entity.CarInfo"
 			column="car_id" select="com.justfind.dao.CarInfoMapper.selectByPrimaryKey"></association>
 		<association property="orderUser" javaType="com.justfind.entity.Users"

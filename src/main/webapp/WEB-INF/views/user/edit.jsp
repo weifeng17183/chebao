@@ -43,6 +43,13 @@ window.onload = function(){
 					minlength : 2,
 					maxlength : 20
 				},
+				"password" : {
+					minlength : 6,
+					maxlength : 20
+				},
+				"rePassword" : {
+					equalTo : "#password"
+				}
 			},
 
 			messages : {
@@ -52,6 +59,13 @@ window.onload = function(){
 					minlength : "昵称长度必须大于等于2",
 					maxlength : "昵称长度必须小于等于20"
 				},
+				"password" : {
+					minlength : "密码必须大于等于6",
+					maxlength : "密码必须小于等于20"
+				},
+				"rePassword" : {
+					equalTo : "两次密码输入不一致"
+				}
 			},
 			submitHandler : function(form) {
 				$(form).find(":submit").attr("disabled", true);
@@ -124,8 +138,18 @@ window.onload = function(){
 				</tr>
 				<tr>
 					<th>邀请人:</th>
-					<td><input type="text" name="name" value="${user.inviter}"
+					<td><input type="text" name="inviter" value="${user.inviter}"
 						class="formText" /><label class="requireField">*</label></td>
+				</tr>
+				<tr>
+					<th>密码:</th>
+					<td><input id="password" type="password" name="password"
+						value="" class="formText" /></td>
+				</tr>
+				<tr>
+					<th>重复密码:</th>
+					<td><input type="password" name="rePassword" class="formText"
+						value="" /><label class="requireField">*</label></td>
 				</tr>
 				<tr>
 					<th>备注:</th>

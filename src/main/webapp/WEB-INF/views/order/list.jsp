@@ -146,7 +146,7 @@
 					<td>${order.factory.factoryName}</td>
 					<td>${order.orderUser.name}</td>
 					<td><a href="${base}/admin/order/info?id=${order.id}"
-						title="[查看]">[查看]</a> <shiro:hasPermission name="order:update">
+						title="[查看]">[查看]</a> <shiro:hasPermission name="order:update or order:list">
 							<c:if test="${order.factoryId==null}">
 								<a href="#" title="${order.id}" class="bShowDiv1">[设置车厂]</a>
 							</c:if>

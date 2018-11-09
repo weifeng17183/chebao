@@ -51,22 +51,19 @@ public class UserController extends BaseController {
 			users.setRegisterDate(new Date());
 			usersService.insert(users);
 			/*
-			 * Users dbUser =
-			 * usersService.selectByMobileNum(users.getMobileNum()); if (carInfo
-			 * != null && carInfo.getCarNumber() != null) {
+			 * Users dbUser = usersService.selectByMobileNum(users.getMobileNum()); if
+			 * (carInfo != null && carInfo.getCarNumber() != null) {
 			 * carInfo.setUserId(dbUser.getUserId());
 			 * carInfoMapper.insertSelective(carInfo); String[] picPath =
-			 * request.getParameterValues("falseInput"); for (String imgStr :
-			 * picPath) { String path =
-			 * request.getSession().getServletContext().getRealPath(""); Integer
-			 * carId = carInfoMapper.getMaxId(); CarImage entity = new
-			 * CarImage(); entity.setCarId(carId); String fileName =
-			 * sdf1.format(new Date()) + ".jpg"; Thread.sleep(100); String
-			 * relativelyPath =
-			 * "\\" + "images" + "\\" + BaseConstant.CAR_PIC + "\\"; path +=
-			 * "WEB-INF" + relativelyPath; base64Change.generateImage(imgStr,
-			 * path + fileName); entity.setCarImageUrl(relativelyPath +
-			 * fileName); carImageMapper.insertSelective(entity); } }
+			 * request.getParameterValues("falseInput"); for (String imgStr : picPath) {
+			 * String path = request.getSession().getServletContext().getRealPath("");
+			 * Integer carId = carInfoMapper.getMaxId(); CarImage entity = new CarImage();
+			 * entity.setCarId(carId); String fileName = sdf1.format(new Date()) + ".jpg";
+			 * Thread.sleep(100); String relativelyPath =
+			 * "\\" + "images" + "\\" + BaseConstant.CAR_PIC + "\\"; path += "WEB-INF" +
+			 * relativelyPath; base64Change.generateImage(imgStr, path + fileName);
+			 * entity.setCarImageUrl(relativelyPath + fileName);
+			 * carImageMapper.insertSelective(entity); } }
 			 */
 			model.addAttribute("message", "添加成功！");
 			model.addAttribute("redirectUrl", "admin/user/list?userType=0");
@@ -81,6 +78,9 @@ public class UserController extends BaseController {
 	public String save(HttpServletRequest request, Model model, Users users, CarInfo carInfo) {
 		try {
 			usersService.updateByPrimaryKeySelective(users);
+			if (users.getPassword() != null) {
+				usersService.updatePass(users);
+			}
 			model.addAttribute("message", "修改成功！");
 			model.addAttribute("redirectUrl", "admin/user/list?userType=0");
 			return SUCCESS;
@@ -113,6 +113,9 @@ public class UserController extends BaseController {
 	public String saveConductor(HttpServletRequest request, Model model, Users users) {
 		try {
 			usersService.updateByPrimaryKeySelective(users);
+			if (users.getPassword() != null) {
+				usersService.updatePass(users);
+			}
 			model.addAttribute("message", "修改成功！");
 			model.addAttribute("redirectUrl", "admin/user/conductorList?userType=1");
 			return SUCCESS;
