@@ -2,6 +2,7 @@ package com.justfind.service;
 
 import java.util.List;
 
+import com.justfind.bean.OrderCollect;
 import com.justfind.entity.Order;
 
 public interface OrderService {
@@ -22,4 +23,6 @@ public interface OrderService {
 	void buildPayParam(Order order);
 
 	List<Order> querySettlementList(Order order);
+
+	List<OrderCollect> queryCollectList(Order order);
 }

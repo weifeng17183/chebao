@@ -33,18 +33,23 @@
 				<a href="${base}/admin/cuser/add" target="mainFrame">添加客户</a>
 			</dd>
 		</dl>
-		<dl>
-			<dt>
-				<span>接车员管理&nbsp;</span>
-			</dt>
-			<dd>
-				<a href="${base}/admin/cuser/conductorList?userType=1"
-					target="mainFrame">接车员列表</a>
-			</dd>
-			<dd>
-				<a href="${base}/admin/cuser/addConductor" target="mainFrame">添加接车员</a>
-			</dd>
-		</dl>
+		<shiro:hasAnyPermission name="admin:list,admin:add">
+			<dl>
+				<dt>
+					<span>文员管理&nbsp;</span>
+				</dt>
+				<shiro:hasPermission name="admin:list">
+					<dd>
+						<a href="${base}/admin/cadmin/factorylist" target="mainFrame">文员列表</a>
+					</dd>
+				</shiro:hasPermission>
+				<shiro:hasPermission name="admin:add">
+					<dd>
+						<a href="${base}/admin/cadmin/addfactory" target="mainFrame">添加文员</a>
+					</dd>
+				</shiro:hasPermission>
+			</dl>
+		</shiro:hasAnyPermission>
 	</div>
 </body>
 </html>

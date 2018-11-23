@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.justfind.bean.OrderCollect;
 import com.justfind.constant.BaseConstant;
 import com.justfind.constant.BaseConstant.OrderStatus;
 import com.justfind.constant.BaseConstant.PayType;
@@ -286,5 +287,10 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Order> querySettlementList(Order order) {
 		return orderMapper.querySettlementList(order);
+	}
+
+	@Override
+	public List<OrderCollect> queryCollectList(Order order) {
+		return orderMapper.queryCollectList(order);
 	}
 }

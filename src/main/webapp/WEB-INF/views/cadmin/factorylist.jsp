@@ -10,13 +10,13 @@
 		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
 		<ul></ul>
 	</div>
-	<div class="bar">管理员列表&nbsp;总记录数: ${page.totalCount}
+	<div class="bar">文员列表&nbsp;总记录数: ${page.totalCount}
 		(共${page.totalPage}页)</div>
 	<div class="body" style="position: relative;">
 		<div class="listBar">
-			<form id="listForm" action="${base}/admin/admin/factorylist" method="post"
+			<form id="listForm" action="${base}/admin/cadmin/factorylist" method="post"
 				style="display: inline">
-				<label>管理员名称: </label> <input type="text" name="userName"
+				<label>文员名称: </label> <input type="text" name="userName"
 					value="${searchBean.userName}" /> <input type="button"
 					id="searchButton" class="formButton" value="搜 索" hidefocus />
 				&nbsp;&nbsp; <label>每页显示: </label> <select name="pageSize"
@@ -34,11 +34,11 @@
 
 		<table id="listTable" class="listTable">
 			<tr>
-				<th><span>管理员编号</span></th>
-				<th><span>管理员名称</span></th>
+				<th><span>文员编号</span></th>
+				<th><span>文员名称</span></th>
 				<th><span>所属车厂编号</span></th>
 				<th><span>所属车厂名称</span></th>
-				<th><span>管理员状态状态</span></th>
+				<th><span>文员状态状态</span></th>
 				<th><span>操作</span></th>
 			</tr>
 			<c:forEach items="${adminList}" var="admin">
@@ -56,12 +56,12 @@
 							</c:otherwise>
 						</c:choose></td>
 					<td><shiro:hasPermission name="admin:update">
-							<a href="${base}/admin/admin/editfactory?adminId=${admin.adminId}"
+							<a href="${base}/admin/cadmin/editfactory?adminId=${admin.adminId}"
 								title="[编辑]">[编辑]</a>
 						</shiro:hasPermission> <c:if test="${admin.adminId!=1 }">
 							<shiro:hasPermission name="admin:delete">
-								<a onclick="if(confirm('确定删除此管理员吗?')==false)return false;"
-									href="${base}/admin/admin/delete?adminId=${admin.adminId}"
+								<a onclick="if(confirm('确定删除此文员吗?')==false)return false;"
+									href="${base}/admin/cadmin/delete?adminId=${admin.adminId}"
 									title="[删除]">[删除]</a>
 							</shiro:hasPermission>
 						</c:if></td>

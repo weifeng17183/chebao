@@ -133,7 +133,7 @@
 				</tr>
 			</table>
 			
-			<!-- <div class="bar">
+			<div class="bar">
 				<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;非标项目</span>
 			</div>
 			<div class="findOForders">
@@ -154,7 +154,7 @@
 						</dl>
 					</div>
 				</div>
-			</div> -->
+			</div>
 			
 			<div class="bar">
 				<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;已选项目</span>

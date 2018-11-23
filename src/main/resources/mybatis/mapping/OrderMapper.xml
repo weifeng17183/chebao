@@ -78,7 +78,7 @@
 		<collection property="itemList" ofType="com.justfind.entity.OrderItem"
 			select="selectItemList" column="id"></collection>
 	</resultMap>
-
+	
 	<select id="selectItemList" parameterType="java.lang.Integer"
 		resultMap="com.justfind.dao.OrderItemMapper.BaseResultMap">
 		SELECT * FROM order_item WHERE order_id = #{id}
@@ -143,6 +143,27 @@
 		LEFT JOIN car_info
 		d ON a.`car_id` = d.`car_id`
 		<where>
+			<if test="carInfo != null and carInfo.carNumber != null and carInfo.carNumber !=''">
+				and d.car_number like '%${carInfo.carNumber}%'
+			</if>
+			<if test="user != null and user.name != null and user.name !=''">
+				and (
+				b.name LIKE CONCAT('%',#{user.name},'%') or
+				b.mobile_num LIKE CONCAT('%',#{user.name},'%')
+				)
+			</if>
+			<if test="user != null and user.inviter != null and user.inviter !=''">
+				and b.inviter LIKE CONCAT('%',#{user.inviter},'%') 
+			</if>
+			<if test="orderUser != null and orderUser.name != null and orderUser.name !=''">
+				and (
+				c.name LIKE CONCAT('%',#{orderUser.name},'%') or
+				c.mobile_num LIKE CONCAT('%',#{orderUser.name},'%')
+				)
+			</if>
+			<if test="orderId != null and orderId !=''">
+				and a.order_id like '%${orderId}%'
+			</if>
 			<if test="payStatus != null">
 				and a.pay_status &gt;= #{payStatus}
 			</if>
@@ -167,6 +188,27 @@
 		</where>
 		order by a.create_time desc
 	</select>
+	
+	<select id="queryCollectList" resultType="com.justfind.bean.OrderCollect"
+		parameterType="com.justfind.entity.Order">
+		SELECT a.`factory_id` as factoryId,b.`factory_name` as factoryName
+		,SUM(a.amount) AS orderAmount,COUNT(a.`id`) AS orderCount
+ 		FROM `order` a LEFT JOIN factory b ON a.`factory_id` = b.`id` 
+ 		LEFT JOIN users c ON a.`user_id` = c.`user_id`
+		<where>
+			a.pay_status > 5 
+			<if test="factoryId != null">
+				and a.factory_id = #{factoryId}
+			</if>
+			<if test="beginDate != null">
+				and a.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endDate != null">
+				and a.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		 GROUP BY a.`factory_id` 
+	</select>
 
 	<select id="queryList" resultMap="BaseResultMap" parameterType="com.justfind.entity.Order">
 		select *
@@ -175,22 +217,25 @@
 		LEFT JOIN car_info
 		d ON a.`car_id` = d.`car_id`
 		<where>
-			<if test="carInfo != null and carInfo.carNumber != null">
+			<if test="carInfo != null and carInfo.carNumber != null and carInfo.carNumber !=''">
 				and d.car_number like '%${carInfo.carNumber}%'
 			</if>
-			<if test="user != null and user.name != null">
+			<if test="user != null and user.name != null and user.name !=''">
 				and (
 				b.name LIKE CONCAT('%',#{user.name},'%') or
 				b.mobile_num LIKE CONCAT('%',#{user.name},'%')
 				)
 			</if>
-			<if test="orderUser != null and orderUser.name != null">
+			<if test="user != null and user.inviter != null and user.inviter !=''">
+				and b.inviter LIKE CONCAT('%',#{user.inviter},'%') 
+			</if>
+			<if test="orderUser != null and orderUser.name != null and orderUser.name !=''">
 				and (
 				c.name LIKE CONCAT('%',#{orderUser.name},'%') or
 				c.mobile_num LIKE CONCAT('%',#{orderUser.name},'%')
 				)
 			</if>
-			<if test="orderId != null">
+			<if test="orderId != null and orderId !=''">
 				and a.order_id like '%${orderId}%'
 			</if>
 			<if test="payStatus != null">

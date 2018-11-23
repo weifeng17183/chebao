@@ -40,6 +40,12 @@
 			<if test="userName != null">
 				and user_name like '%${userName}%'
 			</if>
+			<if test="factoryId != null">
+				and factory_id  = #{factoryId}
+			</if>
+			<if test="adminType != null">
+				and admin_type  = #{adminType}
+			</if>
 		</where>
 		order by admin_id asc
 	</select>
@@ -99,6 +105,9 @@
 			<if test="factoryId != null">
 				factory_id,
 			</if>
+			<if test="adminType != null">
+				admin_type,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="adminId != null">
@@ -115,6 +124,9 @@
 			</if>
 			<if test="factoryId != null">
 				#{factoryId,jdbcType=INTEGER},
+			</if>
+			<if test="adminType != null">
+				#{adminType,jdbcType=INTEGER},
 			</if>
 		</trim>
 	</insert>

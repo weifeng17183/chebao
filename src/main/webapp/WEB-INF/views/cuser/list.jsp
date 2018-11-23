@@ -24,7 +24,6 @@
 		</div>
 		<table id="listTable" class="listTable">
 			<tr>
-				<th><span></span></th>
 				<th><span>编号</span></th>
 				<th><span>客户名称</span></th>
 				<th><span>手机号码</span></th>
@@ -36,8 +35,6 @@
 			</tr>
 			<c:forEach items="${userList}" var="user">
 				<tr>
-					<td><input name="f" value="${user.userId}" type="checkbox"
-						data-eid="${user.userId}"></td>
 					<td>${user.userId}</td>
 					<td>${user.name}</td>
 					<td>${user.mobileNum}</td>

@@ -2,6 +2,7 @@ package com.justfind.dao;
 
 import java.util.List;
 
+import com.justfind.bean.OrderCollect;
 import com.justfind.entity.Order;
 
 public interface OrderMapper {
@@ -22,4 +23,6 @@ public interface OrderMapper {
 	List<Order> queryOrderList(Order order);
 
 	List<Order> querySettlementList(Order order);
+
+	List<OrderCollect> queryCollectList(Order order);
 }

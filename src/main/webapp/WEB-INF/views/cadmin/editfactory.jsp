@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<%@include file="/common/head.jsp"%>
+<%@include file="/common/head3.jsp"%>
 <script type="text/javascript">
 	$()
 			.ready(
@@ -101,8 +101,8 @@
 </head>
 <body class="input admin">
 	<div class="bar">
-		<c:if test="${admin.adminId!=null}">编辑管理员</c:if>
-		<c:if test="${admin.adminId==null}">添加管理员</c:if>
+		<c:if test="${admin.adminId!=null}">编辑文员</c:if>
+		<c:if test="${admin.adminId==null}">添加文员</c:if>
 		(<span style="color: red;">*</span>为必填项)
 	</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
@@ -111,8 +111,10 @@
 	</div>
 	<div class="body">
 		<form id="validateForm" name="member"
-			action="${base}/admin/admin/save" method="post">
+			action="${base}/admin/cadmin/save" method="post">
+			<input type="hidden" name="adminType" value="2" />
 			<input type="hidden" name="adminId" value="${admin.adminId}" />
+			<input type="hidden" name="factoryId" value="${loginAdmin.factoryId}" />
 			<table class="inputTable">
 				<tr>
 					<th>用户昵称:</th>
@@ -141,25 +143,13 @@
 					<tr>
 						<th>角色:</th>
 						<td><c:forEach items="${roleList}" var="role">
-								<c:if test="${role.roleId!=1 && role.roleId!=13 && role.roleId!= 26}">
+								<c:if test="${role.roleId==26}">
 									<label> <input type="checkbox" name="roleIds"
-										value="${role.roleId}"
-										<c:if test="${role.isChecked}">checked</c:if> />${role.roleSign}
+										value="${role.roleId}" checked />${role.roleSign}
 									</label>
 								</c:if>
 							</c:forEach> <label class="requireField">*</label></td>
 					</tr>
-					<c:if test="${admin.adminId!=1 }">
-						<tr>
-							<th>状态:</th>
-							<td><label><input type="radio" name="adminStatus"
-									value="1" checked
-									<c:if test="${admin.adminStatus ==1 }">checked</c:if> />正常</label> <label><input
-									type="radio" name="adminStatus" value="2"
-									<c:if test="${admin.adminStatus ==2 }">checked</c:if> />禁用</label><label
-								class="requireField">*</label></td>
-						</tr>
-					</c:if>
 				</shiro:hasAnyPermission>
 			</table>
 			<div class="buttonArea">

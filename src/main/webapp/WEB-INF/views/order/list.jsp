@@ -60,7 +60,18 @@
 				</label> <input type="text" name="carInfo.carNumber" size="20"
 					value="${order.carInfo.carNumber}" placeholder="" /> <label>订单号:
 				</label> <input type="text" name="orderId" size="20"
-					value="${order.orderId}" placeholder="" /> <label>状态: </label> <select
+					value="${order.orderId}" placeholder="" /> 
+					
+					<label>车厂: </label> <select name="factoryId">
+							<option value="">请选择车厂</option>
+							<c:forEach items="${factoryList}" var="factory">
+								<option value="${factory.id}"
+								<c:if test="${order.factoryId == factory.id}"> selected</c:if>
+								>${factory.factoryName}</option>
+							</c:forEach>
+					</select>
+					
+					<label>状态: </label> <select
 					name="payStatus">
 					<option value="">请选择状态</option>
 					<option value="1"
@@ -234,7 +245,7 @@
 							<td></td>
 						</tr>
 						<tr>
-							<th>接车员</th>
+							<th>车厂</th>
 							<td><select name="factoryId">
 									<option value="">请选择车厂</option>
 									<c:forEach items="${factoryList}" var="factory">

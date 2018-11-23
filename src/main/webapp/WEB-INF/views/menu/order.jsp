@@ -25,6 +25,9 @@
 			<dd>
 				<a href="${base}/admin/order/settlement" target="mainFrame">已付款订单结算</a>
 			</dd>
+			<dd>
+				<a href="${base}/admin/order/collect" target="mainFrame">车厂订单汇总</a>
+			</dd>
 		</dl>
 		<shiro:hasAnyPermission name="product:list,product:add">
 			<dl>
@@ -157,7 +160,7 @@
 						<a href="${base}/admin/admin/addfactory" target="mainFrame">添加车厂管理员</a>
 					</dd>
 				</shiro:hasPermission>
-			<%-- 	<shiro:hasPermission name="role:list">
+		     	<shiro:hasPermission name="role:list">
 					<dd>
 						<a href="${base}/admin/role/list" target="mainFrame">角色管理</a>
 					</dd>
@@ -166,7 +169,7 @@
 					<dd>
 						<a href="${base}/admin/permission/list" target="mainFrame">权限管理</a>
 					</dd>
-				</shiro:hasPermission> --%>
+				</shiro:hasPermission>
 			</dl>
 		</shiro:hasAnyPermission>
 	</div>

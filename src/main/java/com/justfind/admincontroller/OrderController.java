@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.justfind.bean.OrderCollect;
 import com.justfind.bean.Template;
 import com.justfind.bean.TemplateParam;
 import com.justfind.bean.Token;
@@ -91,10 +92,26 @@ public class OrderController extends BaseController {
 		order.setPayStatus(6);
 		List<Order> list = orderService.querySettlementList(order);
 		Rate rate = rateMapper.selectOne();
+		List<Factory> factoryList = factoryMapper.selectAll();
+		model.addAttribute("factoryList", factoryList);
 		model.addAttribute("rate", rate);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		return "order/settlement";
+	}
+	
+	@RequestMapping(value = "/collect")
+	public String collect(HttpServletRequest request, Model model, Order order) {
+		PageContext page = PageContext.getContext(request);
+		order.setPayStatus(6);
+		List<OrderCollect> list = orderService.queryCollectList(order);
+		Rate rate = rateMapper.selectOne();
+		List<Factory> factoryList = factoryMapper.selectAll();
+		model.addAttribute("factoryList", factoryList);
+		model.addAttribute("rate", rate);
+		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		return "order/collect";
 	}
 
 	@RequestMapping(value = "/save")

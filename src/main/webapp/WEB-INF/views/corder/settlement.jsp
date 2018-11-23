@@ -14,13 +14,15 @@
 		(共${page.totalPage}页)</div>
 	<div class="body" style="position: relative;">
 		<div class="listBar">
-			<form id="listForm" action="${base}/admin/corder/list" method="post"
+			<form id="listForm" action="${base}/admin/corder/settlement" method="post"
 				style="display: inline">
-				<input type="hidden" name="carStatus" value="1" /> <label>客户:
-				</label> <input type="text" name="user.name" size="20"
-					value="${order.user.name}" placeholder="客户手机号/客户姓名" /> <label>车牌:
-				</label> <input type="text" name="carInfo.carNumber" size="20"
-					value="${order.carInfo.carNumber}" placeholder="" /> <label>订单号:
+				 <label>客户:</label> <input type="text" name="user.name" size="20"
+					value="${order.user.name}" placeholder="客户手机号/客户姓名" /> 
+				 <label>邀请人:</label> <input type="text" name="user.inviter" size="20"
+					value="${order.user.inviter}" placeholder="邀请人" /> 
+				<label>车牌: </label> <input type="text" name="carInfo.carNumber" size="20"
+					value="${order.carInfo.carNumber}" placeholder="" /> 
+				<label>订单号:
 				</label> <input type="text" name="orderId" size="20"
 					value="${order.orderId}" placeholder="" /><label>下单日期:</label> <input type="text" name="beginDate"
 					class="formText" style="width: 80px"
@@ -33,7 +35,7 @@
 		</div>
 		<table id="listTable" class="listTable">
 			<tr>
-				<th><span>订单</span></th>
+				<th><span>订单号</span></th>
 				<th><span>下单时间</span></th>
 				<th><span>车牌号码</span></th>
 				<th><span>联系号码</span></th>
@@ -42,7 +44,7 @@
 				<th><span>订单总金额</span></th>
 				<th><span>车厂占比</span></th>
 				<th><span>平台占比</span></th>
-				<th><span>推荐人占比</span></th>
+				<th><span>邀请人占比</span></th>
 				<th><span>操作</span></th>
 			</tr>
 			<c:forEach items="${list}" var="order">
@@ -56,8 +58,14 @@
 					<td>${order.user.inviter}</td>
 					<td>¥${order.amount}</td>
 					<td>¥${order.amount*rate.factoryRate/100}</td>
-					<td>¥${order.amount*rate.platformRate/100}</td>
-					<td>¥${order.amount*rate.invaterRate/100}</td>
+					<td>
+						<c:if test="${order.user.inviter == null }">¥${order.amount*(rate.platformRate+rate.invaterRate)/100}</c:if>
+						<c:if test="${order.user.inviter != null }">¥${order.amount*rate.platformRate/100}</c:if>
+					</td>
+					<td>
+						<c:if test="${order.user.inviter == null }">¥0</c:if>
+						<c:if test="${order.user.inviter != null }">¥${order.amount*rate.invaterRate/100}</c:if>
+					</td>
 					<td><a href="${base}/admin/order/info?id=${order.id}"
 						title="[查看]">[查看]</a></td>
 				</tr>
