@@ -27,8 +27,8 @@
 				</select> <input type="button" id="searchButton" class="formButton"
 					value="搜 索" hidefocus /> &nbsp;&nbsp; <label>每页显示: </label> <select
 					name="pageSize" id="pageSize">
-					<option value="10" <c:if test="${pageSize == 10}"> selected</c:if>>
-						10</option>
+					<option value="15" <c:if test="${pageSize == 15}"> selected</c:if>>
+						15</option>
 					<option value="20" <c:if test="${pageSize == 20}"> selected</c:if>>
 						20</option>
 					<option value="50" <c:if test="${pageSize == 50}"> selected</c:if>>

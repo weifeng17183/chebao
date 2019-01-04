@@ -4,6 +4,82 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%@include file="/common/head.jsp"%>
+<script type="text/javascript">
+	$()
+			.ready(
+					function() {
+						var $validateErrorContainer = $("#validateErrorContainer");
+						var $validateErrorLabelContainer = $("#validateErrorContainer ul");
+						var $validateForm = $("#validateForm");
+
+						var $tab = $("#tab");
+
+						var secondTypeId = "${secondType.secondTypeId}";
+
+						// Tab效果
+						$tab.tabs(".tabContent", {
+							tabs : "input"
+						});
+
+						// 表单验证
+						$validateForm
+								.validate({
+									wrapper : "li",
+									errorClass : "validateError",
+									ignoreTitle : true,
+									errorPlacement : function(error, element) {
+										var wrapHtm = '<label rel="tips"  style="color:red;">';
+										wrapHtm += $(error).text();
+										wrapHtm += '</label>'
+										var $tips = $("label[rel='tips']", $(
+												element).parent());
+										if ($tips.size() > 0) {
+											$tips.replaceWith($(wrapHtm));
+										} else {
+											$(wrapHtm).appendTo(
+													$(element).parent());
+										}
+									},
+
+									success : function(label) {
+									},
+									rules : {
+										"factoryName" : {
+											required : true
+										},
+										"factoryContract" : {
+											required : true
+										},
+										"factoryMobile" : {
+											required : true,
+											minlength : 11,
+											number : true,
+											maxlength : 11
+										}
+									},
+
+									messages : {
+										"factoryName" : {
+											required : "请填写车厂名称"
+										},
+										"factoryContract" : {
+											required : "请填写车厂联系人"
+										},
+										"factoryMobile" : {
+											required : "请填写车厂联系电话",
+											number : "手机号只允许数字",
+											minlength : "手机号必须等于11",
+											maxlength : "手机号必须等于11"
+										}
+									},
+									submitHandler : function(form) {
+										$(form).find(":submit").attr(
+												"disabled", true);
+										form.submit();
+									}
+								});
+					});
+</script>
 </head>
 <body class="input">
 	<div class="bar">

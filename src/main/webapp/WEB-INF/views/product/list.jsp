@@ -73,7 +73,17 @@
 				</select> <label>小类: </label> <select name="secondTypeId" id="secondTypeId">
 					<option value=''>请选择小类</option>
 				</select> <input type="button" id="searchButton" class="formButton"
-					value="搜 索" hidefocus />
+					value="搜 索" hidefocus /> &nbsp;&nbsp; <label>每页显示: </label> <select
+					name="pageSize" id="pageSize">
+					<option value="15" <c:if test="${pageSize == 15}"> selected</c:if>>
+						15</option>
+					<option value="20" <c:if test="${pageSize == 20}"> selected</c:if>>
+						20</option>
+					<option value="50" <c:if test="${pageSize == 50}"> selected</c:if>>
+						50</option>
+					<option value="100"
+						<c:if test="${pageSize == 100}"> selected</c:if>>100</option>
+				</select>
 			</div>
 			<table id="listTable" class="listTable">
 				<tr>
@@ -84,6 +94,7 @@
 					<th><span>大类</span></th>
 					<th><span>小类</span></th>
 					<th><span>创建时间</span></th>
+					<th><span>修改时间</span></th>
 					<th><span>操作</span></th>
 				</tr>
 				<c:forEach items="${list}" var="product">
@@ -91,12 +102,16 @@
 						<td>${product.id}</td>
 						<td>${product.productName}</td>
 						<td>￥${product.price}</td>
-						<td>${product.discount}<c:if test="${product.discount!=null}">折</c:if>
+						<td><c:if test="${product.discount!=null}">${product.discount}折</c:if>
+						<c:if test="${product.discount==null}">无折扣</c:if>
 						</td>
 						<td>${product.stuffType.stuffTypeName}</td>
 						<td>${product.secondType.secondTypeName}</td>
 						<td><span> <fmt:formatDate
 									value="${product.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+						</span></td>
+						<td><span> <fmt:formatDate
+									value="${product.updateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</span></td>
 						<td><a href="${base}/admin/product/edit?id=${product.id}"
 							title="[修改]">[修改]</a>  <a

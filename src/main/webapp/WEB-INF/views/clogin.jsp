@@ -103,7 +103,7 @@
 			<table class="loginTable">
 				<tr>
 					<td rowspan="3"><img
-						src="${base}/template/admin/images/login_logo.gif"
+						src="${base}/template/admin/images/clogin_logo.gif"
 						alt="车宝管家车厂端" /></td>
 					<th>用户名:</th>
 					<td><input type="text" id="username" name="userName" class="formText" value="${admin.userName}" /></td>

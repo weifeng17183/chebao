@@ -87,9 +87,10 @@
 								<dd id=" ${item.productId}">
 									<span> ${item.productName} </span> <span>${item.price}</span>
 									<c:if test="${item.discount==null}">
-										<span>&nbsp;</span>
+										<span>100%</span>
 									</c:if>
-									<span>${item.discount}</span> <span>${item.itemAmount}</span>
+									<c:if test="${item.discount!=null}">
+									<span>${item.discount*100/10}%</span></c:if> <span>${item.itemAmount}</span>
 								</dd>
 							</c:forEach>
 						</dl>

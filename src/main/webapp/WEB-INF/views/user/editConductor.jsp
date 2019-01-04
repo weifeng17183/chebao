@@ -109,7 +109,7 @@
 				<tr>
 					<th>重复密码:</th>
 					<td><input type="password" name="rePassword" class="formText"
-						value="" /><label class="requireField">*</label></td>
+						value="" /></td>
 				</tr>
 				<tr>
 					<th>备注:</th>

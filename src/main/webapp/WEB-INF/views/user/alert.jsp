@@ -85,14 +85,14 @@
 					</dt>
 					<c:forEach items="${carList}" var="car">
 						<dd>
-							<span>${car.carNumber}</span> 
-							<span><c:if test="${car.carName == null}">&nbsp;</c:if>${car.carName}</span> 
+							<span><c:if test="${car.carNumber == null || car.carNumber ==''}">&nbsp;</c:if>${car.carNumber}</span> 
+							<span><c:if test="${car.carName == null || car.carName ==''}">&nbsp;</c:if>${car.carName}</span> 
 							<span><c:if test="${car.colour == null || car.colour ==''}">&nbsp;</c:if>${car.colour}</span> 
 							<span><c:if test="${car.engineNumber == null || car.engineNumber ==''}">&nbsp;</c:if>${car.engineNumber}</span>
 							<span><c:if test="${car.frameNumber == null || car.frameNumber ==''}">&nbsp;</c:if>${car.frameNumber}</span>
-							<span><c:if test="${car.mileage == null}">&nbsp;</c:if>${car.mileage}</span>
-							<span><c:if test="${car.insuranceCompany == null}">&nbsp;</c:if>${car.insuranceCompany}</span>
-							<span><c:if test="${car.insuranceNum == null}">&nbsp;</c:if>${car.insuranceNum}</span>
+							<span><c:if test="${car.mileage == null || car.mileage ==''}">&nbsp;</c:if>${car.mileage}</span>
+							<span><c:if test="${car.insuranceCompany == null || car.insuranceCompany ==''}">&nbsp;</c:if>${car.insuranceCompany}</span>
+							<span><c:if test="${car.insuranceNum == null || car.insuranceNum ==''}">&nbsp;</c:if>${car.insuranceNum}</span>
 							<span> <a href="#" title="${car.carId}" class="bShowDiv">[编辑]</a></span>
 						</dd>
 					</c:forEach>

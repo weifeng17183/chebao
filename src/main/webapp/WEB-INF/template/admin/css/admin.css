@@ -109,8 +109,10 @@ body {
 
 .header .bodyRight {
 	height: 60px;
-	float: left;
+	float: right;
 	width: 720px;
+	margin-right: 50px;
+	margin-top: 15px;
 }
 
 .header .link {

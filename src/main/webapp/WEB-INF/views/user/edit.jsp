@@ -139,7 +139,7 @@ window.onload = function(){
 				<tr>
 					<th>邀请人:</th>
 					<td><input type="text" name="inviter" value="${user.inviter}"
-						class="formText" /><label class="requireField">*</label></td>
+						class="formText" /></td>
 				</tr>
 				<tr>
 					<th>密码:</th>
@@ -149,7 +149,7 @@ window.onload = function(){
 				<tr>
 					<th>重复密码:</th>
 					<td><input type="password" name="rePassword" class="formText"
-						value="" /><label class="requireField">*</label></td>
+						value="" /></td>
 				</tr>
 				<tr>
 					<th>备注:</th>

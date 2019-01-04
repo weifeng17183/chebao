@@ -77,7 +77,7 @@
 </script>
 </head>
 <body class="input admin">
-	<div class="bar">评估订单</div>
+	<div class="bar"><c:if test="${order.payStatus==2}">评估</c:if><c:if test="${order.payStatus==3}">修改</c:if>订单</div>
 	<div id="validateErrorContainer" class="validateErrorContainer">
 		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
 		<ul></ul>
@@ -147,7 +147,7 @@
 							</dt>
 							<dd>
 								<span><input name="itemList[0].productName" type="text"
-									class="formText" /></span><span><input type="text"
+									class="formText" /></span><span><input type="number" step="0.01"
 									name="itemList[0].price" class="formText" /></span> <span><input
 									type="text" name="itemList[0].discount" class="formText" /></span>
 							</dd>
@@ -184,9 +184,10 @@
 								<dd id="${item.productId}">
 									<span> ${item.productName} </span> <span>${item.price}</span>
 									<c:if test="${item.discount==null}">
-										<span>&nbsp;</span>
+										<span>100%</span>
 									</c:if>
-									<span>${item.discount}</span> <span>${item.itemAmount}</span>
+									<c:if test="${item.discount!=null}">
+									<span>${item.discount*100/10}%</span></c:if> <span>${item.itemAmount}</span>
 								</dd>
 							</c:forEach>
 						</dl>

@@ -7,9 +7,9 @@
 </head>
 <frameset id="parentFrameset" rows="60,*" cols="*" frameborder="no" border="0" framespacing="0">
 	<frame id="headerFrame" name="headerFrame" src="${base}/admin/page/header" frameborder="no" scrolling="no" noresize="noresize" />
-	<frameset id="mainFrameset" name="mainFrameset" cols="152,6,*" frameborder="no" border="0" framespacing="0">
-		<frame id="menuFrame" name="menuFrame" src="${base}/admin/page/menu/order" frameborder="no" noresize="noresize" />
-		<frame id="middleFrame" name="middleFrame" src="${base}/admin/page/middle" frameborder="no" noresize="noresize" />
+	<frameset id="mainFrameset" name="mainFrameset" cols="130,6,*" frameborder="no" border="0" framespacing="0">
+		<frame id="menuFrame" name="menuFrame" src="${base}/admin/page/menu/order" frameborder="no" scrolling="no" noresize="noresize" />
+		<frame id="middleFrame" name="middleFrame" src="${base}/admin/page/middle" frameborder="no" scrolling="no" noresize="noresize" />
 		<frame id="mainFrame" name="mainFrame" src="${base}/admin/page/index" frameborder="no" noresize="noresize" />
 	</frameset>
 </frameset>

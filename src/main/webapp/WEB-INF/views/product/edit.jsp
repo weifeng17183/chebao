@@ -48,7 +48,8 @@
 					number : true
 				},
 				"discount" : {
-					number : true
+					number : true,
+					max:10
 				},
 				"stuffTypeId" : "required",
 				"secondTypeId" : "required"
@@ -64,7 +65,8 @@
 					number : "请输入数字"
 				},
 				"discount" : {
-					number : "请输入数字"
+					number : "请输入数字",
+					max:"不能超过10折"
 				},
 				"stuffTypeId" : "请选择大类",
 				"secondTypeId" : "请选择小类"

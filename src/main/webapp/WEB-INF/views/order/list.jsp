@@ -95,7 +95,17 @@
 					class="formText" style="width: 80px"
 					value="<fmt:formatDate pattern="yyyy-MM-dd" value="${order.endDate}" />"
 					onclick="WdatePicker()" /> &nbsp;&nbsp; <input type="button"
-					id="searchButton" class="formButton" value="搜 索" hidefocus />
+					id="searchButton" class="formButton" value="搜 索" hidefocus /> &nbsp;&nbsp; <label>每页显示: </label> <select
+					name="pageSize" id="pageSize">
+					<option value="15" <c:if test="${pageSize == 15}"> selected</c:if>>
+						15</option>
+					<option value="20" <c:if test="${pageSize == 20}"> selected</c:if>>
+						20</option>
+					<option value="50" <c:if test="${pageSize == 50}"> selected</c:if>>
+						50</option>
+					<option value="100"
+						<c:if test="${pageSize == 100}"> selected</c:if>>100</option>
+				</select>
 		</div>
 		<table id="listTable" class="listTable">
 			<tr>

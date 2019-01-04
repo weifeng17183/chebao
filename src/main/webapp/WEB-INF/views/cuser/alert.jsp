@@ -60,6 +60,59 @@
 		$(".bClose").click(function(event) {
 			$("#editPop").hide(300);
 		});
+		
+		var $validateErrorContainer = $("#validateErrorContainer");
+		var $validateErrorLabelContainer = $("#validateErrorContainer ul");
+		var $validateForm = $("#validateForm");
+
+		var $tab = $("#tab");
+
+		var secondTypeId = "${secondType.secondTypeId}";
+
+		// Tab效果
+		$tab.tabs(".tabContent", {
+			tabs : "input"
+		});
+
+		// 表单验证
+		$validateForm
+				.validate({
+					wrapper : "li",
+					errorClass : "validateError",
+					ignoreTitle : true,
+					errorPlacement : function(error, element) {
+						var wrapHtm = '<label rel="tips"  style="color:red;">';
+						wrapHtm += $(error).text();
+						wrapHtm += '</label>'
+						var $tips = $("label[rel='tips']", $(
+								element).parent());
+						if ($tips.size() > 0) {
+							$tips.replaceWith($(wrapHtm));
+						} else {
+							$(wrapHtm).appendTo(
+									$(element).parent());
+						}
+					},
+
+					success : function(label) {
+					},
+					rules : {
+						"carNumber" : {
+							required : true
+						}
+					},
+
+					messages : {
+						"carNumber" : {
+							required : "请填写车牌号"
+						}
+					},
+					submitHandler : function(form) {
+						$(form).find(":submit").attr(
+								"disabled", true);
+						form.submit();
+					}
+				});
 	});
 </script>
 </head>
@@ -85,14 +138,14 @@
 					</dt>
 					<c:forEach items="${carList}" var="car">
 						<dd>
-							<span>${car.carNumber}</span> 
-							<span><c:if test="${car.carName == null}">&nbsp;</c:if>${car.carName}</span> 
+							<span><c:if test="${car.carNumber == null || car.carNumber ==''}">&nbsp;</c:if>${car.carNumber}</span> 
+							<span><c:if test="${car.carName == null || car.carName ==''}">&nbsp;</c:if>${car.carName}</span> 
 							<span><c:if test="${car.colour == null || car.colour ==''}">&nbsp;</c:if>${car.colour}</span> 
 							<span><c:if test="${car.engineNumber == null || car.engineNumber ==''}">&nbsp;</c:if>${car.engineNumber}</span>
 							<span><c:if test="${car.frameNumber == null || car.frameNumber ==''}">&nbsp;</c:if>${car.frameNumber}</span>
-							<span><c:if test="${car.mileage == null}">&nbsp;</c:if>${car.mileage}</span>
-							<span><c:if test="${car.insuranceCompany == null}">&nbsp;</c:if>${car.insuranceCompany}</span>
-							<span><c:if test="${car.insuranceNum == null}">&nbsp;</c:if>${car.insuranceNum}</span>
+							<span><c:if test="${car.mileage == null || car.mileage ==''}">&nbsp;</c:if>${car.mileage}</span>
+							<span><c:if test="${car.insuranceCompany == null || car.insuranceCompany ==''}">&nbsp;</c:if>${car.insuranceCompany}</span>
+							<span><c:if test="${car.insuranceNum == null || car.insuranceNum ==''}">&nbsp;</c:if>${car.insuranceNum}</span>
 							<span> <a href="#" title="${car.carId}" class="bShowDiv">[编辑]</a></span>
 						</dd>
 					</c:forEach>
@@ -107,6 +160,10 @@
 			<a class="aClose" style="cursor: pointer; float: right;">[关闭]</a>
 			<div class="cStatistics">
 				<span></span>添加车辆
+			</div>
+			<div id="validateErrorContainer" class="validateErrorContainer">
+				<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+				<ul></ul>
 			</div>
 			<form id="validateForm" name="member"
 				action="${base}/admin/cuser/addCar" method="post">

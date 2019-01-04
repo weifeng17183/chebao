@@ -40,11 +40,11 @@ public class CarInfo {
 	}
 
 	public String getCarNumber() {
-		return carNumber;
+		return carNumber.toUpperCase();
 	}
 
 	public void setCarNumber(String carNumber) {
-		this.carNumber = carNumber == null ? null : carNumber.trim();
+		this.carNumber = carNumber == null ? null : carNumber.trim().toUpperCase();
 	}
 
 	public String getEngineNumber() {

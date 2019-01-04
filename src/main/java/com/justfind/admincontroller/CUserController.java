@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -204,10 +205,15 @@ public class CUserController extends BaseController {
 	@RequestMapping(value = "/addCar")
 	public String addCar(HttpServletRequest request, Model model, CarInfo carInfo) {
 		try {
-			carInfoMapper.insertSelective(carInfo);
-			model.addAttribute("redirectUrl", "admin/cuser/alert?userId=" + carInfo.getUserId());
-			model.addAttribute("message", "添加成功！");
-			return SUCCESS;
+			if (StringUtils.isNotBlank(carInfo.getCarNumber())) {
+				carInfoMapper.insertSelective(carInfo);
+				model.addAttribute("redirectUrl", "admin/cuser/alert?userId=" + carInfo.getUserId());
+				model.addAttribute("message", "添加成功！");
+				return SUCCESS;
+			}else {
+				model.addAttribute("message", "添加失败，车牌号不能为空！");
+				return ERROR;
+			}
 		} catch (Exception e) {
 			model.addAttribute("message", "添加失败！");
 			return ERROR;
@@ -217,10 +223,16 @@ public class CUserController extends BaseController {
 	@RequestMapping(value = "/updateCar")
 	public String updateCar(HttpServletRequest request, Model model, CarInfo carInfo) {
 		try {
-			carInfoMapper.updateByPrimaryKeySelective(carInfo);
-			model.addAttribute("redirectUrl", "admin/cuser/alert?userId=" + carInfo.getUserId());
-			model.addAttribute("message", "修改成功！");
-			return SUCCESS;
+			if (StringUtils.isNotBlank(carInfo.getCarNumber())) {
+				carInfoMapper.updateByPrimaryKeySelective(carInfo);
+				model.addAttribute("redirectUrl", "admin/cuser/alert?userId=" + carInfo.getUserId());
+				model.addAttribute("message", "修改成功！");
+				return SUCCESS;
+			}else {
+				model.addAttribute("message", "添加失败，车牌号不能为空！");
+				return ERROR;
+			}
+			
 		} catch (Exception e) {
 			model.addAttribute("message", "修改失败！");
 			return ERROR;

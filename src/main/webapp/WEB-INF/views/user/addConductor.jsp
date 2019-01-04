@@ -102,7 +102,7 @@
 	</div>
 	<div class="body">
 		<form id="validateForm" name="member"
-			action="${base}/admin/user/insert" method="post"
+			action="${base}/admin/user/insertConductor" method="post"
 			enctype='multipart/form-data'>
 			<input type="hidden" name="userType" value="1" />
 			<div class="bar">
