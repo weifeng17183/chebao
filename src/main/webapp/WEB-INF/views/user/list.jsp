@@ -14,21 +14,21 @@
 		(共${page.totalPage}页)</div>
 	<div class="body" style="position: relative;">
 		<div class="listBar">
-			<form id="listForm" action="${base}/admin/user/list" method="post"
+			<form id="listForm" action="${base}/admin/user/list?userType=0" method="post"
 				style="display: inline">
 				<label>关键字: </label> <input type="text" name="name" size="20"
 					value="${users.name}" placeholder="手机号/姓名/备注" /> <input
 					type="button" id="searchButton" class="formButton" value="搜 索"
 					hidefocus /> &nbsp;&nbsp; <label>每页显示: </label> <select
 					name="pageSize" id="pageSize">
-					<option value="15" <c:if test="${pageSize == 15}"> selected</c:if>>
+					<option value="15" <c:if test="${page.pageSize == 15}"> selected</c:if>>
 						15</option>
-					<option value="20" <c:if test="${pageSize == 20}"> selected</c:if>>
+					<option value="20" <c:if test="${page.pageSize == 20}"> selected</c:if>>
 						20</option>
-					<option value="50" <c:if test="${pageSize == 50}"> selected</c:if>>
+					<option value="50" <c:if test="${page.pageSize == 50}"> selected</c:if>>
 						50</option>
 					<option value="100"
-						<c:if test="${pageSize == 100}"> selected</c:if>>100</option>
+						<c:if test="${page.pageSize == 100}"> selected</c:if>>100</option>
 				</select>
 		</div>
 		<table id="listTable" class="listTable">

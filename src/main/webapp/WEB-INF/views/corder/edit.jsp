@@ -17,14 +17,20 @@
 					function() {
 						$("#btn")
 								.click(
-										function() {
-											var num = $(this).attr("title");
-											num = parseInt(num) + 1;
-											$("#fdl")
-													.append(
-															"<dd><span><input name='itemList["+num+"].productName' type='text' class='formText' /></span><span><input type='text' name='itemList["+num+"].price' class='formText' /></span> <span><input type='text' name='itemList["+num+"].discount' class='formText' /></span> </dd>");
-											$(this).attr("title", num);
+									function() {
+										var num = $(this).attr("title");
+										num = parseInt(num) + 1;
+										$("#fdl")
+												.append(
+														"<dd id=dd"+num+" ><span><input name='itemList["+num+"].productName' type='text' class='formText' /></span><span><input type='number' step='0.01' name='itemList["+num+"].price' class='formText' /></span> <span><input type='text' name='itemList["+num+"].discount' class='formText' /></span><span><input type='button' name=dd"+num+" class='formButton deleteDD' title='delete' value='删   除'  /></span> </dd>");
+										$(this).attr("title", num);
+										
+										$(".deleteDD").click(function(){
+											var ddid = $(this).attr("name");
+											/* alert($(this).attr("name")); */
+											$("#"+ddid).remove();
 										});
+									});
 
 						var $allChecked = $("#validateForm .roleAuthorityList");
 						$allChecked
@@ -48,7 +54,7 @@
 																						+ item.productName
 																						+ "</span><span>"
 																						+ item.price
-																						+ "</span><span>&nbsp;</span><span>"
+																						+ "</span><span>100%</span><span>"
 																						+ item.price
 																						+ "</span</dd>");
 															} else {
@@ -59,7 +65,7 @@
 																						+ "</span><span>"
 																						+ item.price
 																						+ "</span><span>"
-																						+ item.discount
+																						+ item.discount*100/10
 																						+ "</span><span>"
 																						+ item.price
 																						* item.discount

@@ -43,6 +43,9 @@ public class UsersServiceImpl implements UsersService {
 		if (record.getOpenId() != null) {
 			Users dbusers = usersMapper.selectByOpenId(record.getOpenId());
 			if (dbusers != null) {
+				if (dbusers.getUserStates()!=1) {
+					throw new CheckServiceException(ErrorCode.PARAMETERS_ILLEGAL, "账号已停用！");
+				}
 				return dbusers;
 			}
 		}
@@ -61,6 +64,9 @@ public class UsersServiceImpl implements UsersService {
 			if (record.getOpenId() != null) {
 				users.setOpenId(record.getOpenId());
 				usersMapper.updateByPrimaryKeySelective(users);
+			}
+			if (users.getUserStates()!=1) {
+				throw new CheckServiceException(ErrorCode.PARAMETERS_ILLEGAL, "账号已停用！");
 			}
 		}
 		return users;

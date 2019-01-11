@@ -14,7 +14,7 @@
 		(共${page.totalPage}页)</div>
 	<div class="body" style="position: relative;">
 		<div class="listBar">
-			<form id="listForm" action="${base}/admin/cuser/list" method="post"
+			<form id="listForm" action="${base}/admin/cuser/conductorList?userType=1" method="post"
 				style="display: inline">
 				<label>关键字: </label> <input type="text" name="name" size="20"
 					value="${users.name}" placeholder="手机号/姓名/备注" /> <input

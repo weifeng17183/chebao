@@ -127,7 +127,10 @@
 				</div>
 				<div class="time">
 					<input type="button" value="添加车辆" id="btnShowDiv"
-						class="formButton" style="line-height: 30px; margin-right: 20%;" />
+						class="formButton" style="line-height: 30px; margin-right: 5%;" />
+					<input type="button" class="formButton"  style="line-height: 30px; margin-right: 20%;" 
+							onclick="window.history.back(); return false;" value="返  回"
+							hidefocus />
 				</div>
 			</div>
 			<div class="categoryList bj">

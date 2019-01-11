@@ -124,6 +124,7 @@
 	<select id="selectByType" resultMap="SimpleMap" parameterType="java.lang.Integer">
 		select * from users
 		<where>
+			user_states = 1
 			<if test="userType != null">
 				and user_type =
 				#{userType,jdbcType=VARCHAR}

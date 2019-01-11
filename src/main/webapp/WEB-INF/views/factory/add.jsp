@@ -8,6 +8,14 @@
 	$()
 			.ready(
 					function() {
+						
+						//手机号码验证  
+						jQuery.validator.addMethod("isMobile", function(value, element) {  
+						 var length = value.length;  
+						 var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;  
+						 return this.optional(element) || (length == 11 && mobile.test(value));  
+						}, "请正确填写手机号码");  
+						
 						var $validateErrorContainer = $("#validateErrorContainer");
 						var $validateErrorLabelContainer = $("#validateErrorContainer ul");
 						var $validateForm = $("#validateForm");
@@ -54,7 +62,8 @@
 											required : true,
 											minlength : 11,
 											number : true,
-											maxlength : 11
+											maxlength : 11,
+											isMobile: true
 										}
 									},
 
@@ -69,7 +78,8 @@
 											required : "请填写车厂联系电话",
 											number : "手机号只允许数字",
 											minlength : "手机号必须等于11",
-											maxlength : "手机号必须等于11"
+											maxlength : "手机号必须等于11", 
+									        isMobile : "请填写正确手机号码"  
 										}
 									},
 									submitHandler : function(form) {

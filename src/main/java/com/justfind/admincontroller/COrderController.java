@@ -151,8 +151,10 @@ public class COrderController extends BaseController {
 		Order dbOrder = orderService.selectByPrimaryKey(id);
 		List<OrderItem> itemList = dbOrder.getItemList();
 		for (OrderItem orderItem : itemList) {
-			if (hashMap.get(orderItem.getProductId()) == null) {
-				orderItemMapper.deleteByPrimaryKey(orderItem.getItemId());
+			if (orderItem.getProductId()!=null) {
+				if (hashMap.get(orderItem.getProductId()) == null) {
+					orderItemMapper.deleteByPrimaryKey(orderItem.getItemId());
+				}
 			}
 		}
 		for (String productId : productIds) {
